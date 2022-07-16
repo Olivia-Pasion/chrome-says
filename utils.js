@@ -9,3 +9,7 @@ export function getAuthRedirect() {
     const redirectUrl = encodeURIComponent(location.href);
     return `/auth/?redirectUrl=${redirectUrl.toString()}`;
 }
+
+export function checkLevel(level) {
+    if (!level) {return `./`;}
+}
