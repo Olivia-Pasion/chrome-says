@@ -14,19 +14,38 @@
     <link rel="stylesheet" href="./styles/reset.css" />
     <link rel="stylesheet" href="./styles/main.css" />
     <link rel="stylesheet" href="./styles/home.css" />
-    <title>Cool Web App</title>
+    <title>Chrome Says</title>
 </head>
 
-<body>
+<body class="light">
     <header>
         <img src="./assets/html_css_js.png">
-        <h1>Cool Web App</h1>
+        <h1>Chrome Says</h1>
         <div id="user"></div>
     </header>
 
     <main>
-
-    </main>
+        <section id="user-buttons">
+            <div id="theme-type">
+                <button class="light-mode">Light Mode</button>
+                <button class="dark-mode">Dark Mode</button>
+            </div>
+        </section>
+        <section id="board-display">
+            Leader Board
+            <p>Player High Score:
+                <p id="player-high-score">100</p>
+            </p>
+            <ul id="leader-board"></ul>
+        </section>
+        <section id="level-container">
+            <div id="levels">
+                <button class="easy level" >Easy</button>
+                <button class="medium level">Medium</button>
+                <button class="hard level">Hard</button>
+                <button disabled><a>GO</a></button>
+            </div>
+        </section>
 
     <footer>&copy;2022 Aspiring Software Developer</footer>
 
