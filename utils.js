@@ -13,3 +13,9 @@ export function getAuthRedirect() {
 export function checkLevel(level) {
     if (!level) {return `./`;}
 }
+
+export async function checkProfile(profile) {
+    if (!profile) {
+        location.replace(`profiles/index.html`);
+    }
+}
