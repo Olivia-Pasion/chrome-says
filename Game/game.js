@@ -25,6 +25,7 @@ let correctOrder = [];
 let gameStarted = false;
 let profile = null;
 let level = 0;
+let playerTurn = false;
 
 function gameRestart() {
 
@@ -33,6 +34,7 @@ function gameRestart() {
     correctOrder = [];
     gameStarted = false;
     level = 0;
+    playerTurn = false;
 
 }
 
@@ -45,6 +47,11 @@ async function handlePageLoad() {
   
 }
 
+// function increaseScore() {
+//     let currentScore = 
+//     playerScore++;
+// }
+
 const buttonSelector = document.getElementById('full-game');
 const [blueButton, redButton, yellowButton, greenButton] = buttonSelector.querySelectorAll('button');
 
@@ -54,22 +61,22 @@ const [blueButton, redButton, yellowButton, greenButton] = buttonSelector.queryS
 blueButton.addEventListener('click', () => {
     userOrder.push(1);
     checkLength();
-    console.log(userOrder);
+    
 });
 redButton.addEventListener('click', () => {
     userOrder.push(2);
     checkLength();
-    console.log(userOrder);
+    
 });
 yellowButton.addEventListener('click', () => {
     userOrder.push(3);
     checkLength();
-    console.log(userOrder);
+    
 });
 greenButton.addEventListener('click', () => {
     userOrder.push(4);
     checkLength();
-    console.log(userOrder);
+    
 });
 
 //Calculators
@@ -95,11 +102,21 @@ function generateOrder() {
         
 }
 
+function increaseScore() {
+    playerScore++;
+}
+
+function displayCurrentScore() {
+    let currentScore = document.getElementById('player-current-score');
+    currentScore.textContent = playerScore;
+
+}
+
 function checkLength() {
 
     if (userOrder.length === correctOrder.length) {
         checkOrder();
-        console.log(userOrder.length, correctOrder.length);
+        //console.log(userOrder.length, correctOrder.length);
     } else if (userOrder.length > correctOrder.length) {
         gameRestart();
     }
@@ -107,16 +124,17 @@ function checkLength() {
 
 
 async function checkOrder() {
-    console.log(playerScore);
+    
     for (let i = 0; i < correctOrder.length; i++) {
         if (userOrder[i] !== correctOrder[i]) {
             gameRestart();
             return;
         }
     }
-    playerScore++;
+    increaseScore();
     await orderDisplay();
-    console.log(playerScore);
+    display();
+    
 }
 
 async function gameRead() {
@@ -132,37 +150,56 @@ async function orderDisplay() {
     for (let i = 0; i < level; i++) {
         generateOrder();
     } 
-    buttonLightUp();
+    buttonsLightUp();
     console.log(correctOrder);
 }
 
 // const index = correctOrder.indexOf(order);
 
 //Display
-async function buttonLightUp() {
+async function buttonsLightUp() {
     console.log(correctOrder); 
-        // let i = 1;
+    playerTurn = false;
     for (let i = 0; i < correctOrder.length; i++) {
-        console.log(i);
-        if (correctOrder[i] === 1) {
-            blueButton.classList.add('glowing');
-        }
-        else if (correctOrder[i] === 2) {
-            redButton.classList.add('glowing');
-        }
-        else if (correctOrder[i] === 3) {
-            yellowButton.classList.add('glowing');
-        }
-        else if (correctOrder[i] === 4) {
-            greenButton.classList.add('glowing');
-        }
+
+     
+
+        createDelay(i);
+        
+
+    } 
+    function createDelay(i) {
+        setTimeout(function() {
+           
+
+            if (correctOrder[i] === 1) {
+                blueButton.classList.add('glowing');
+                setTimeout(function(){blueButton.classList.remove('glowing');}, 500);
+            }
+            else if (correctOrder[i] === 2) {
+                redButton.classList.add('glowing');
+                setTimeout(function(){redButton.classList.remove('glowing');}, 500);
+            }
+            else if (correctOrder[i] === 3) {
+                yellowButton.classList.add('glowing');
+                setTimeout(function(){yellowButton.classList.remove('glowing');}, 500);
+            }
+            else if (correctOrder[i] === 4) {
+                greenButton.classList.add('glowing');
+                setTimeout(function(){greenButton.classList.remove('glowing');}, 500);
+            }
+            console.log(i);
+        }, 1000 * i);
     }
+    
 }
+
 
 
 function display() {
-    gameRead();
-    orderDisplay();
+    // gameRead();
+    // orderDisplay();
+    displayCurrentScore();
 }
-
+orderDisplay();
 display();
