@@ -1,0 +1,23 @@
+.blue.glowing {
+    box-shadow: 1px 1px 2px black, 0 0 25px rgb(26, 32, 155), 0 0 5px rgb(0, 51, 255);
+}
+
+.red.glowing {
+    box-shadow: 1px 1px 2px black, 0 0 25px rgb(154, 21, 21), 0 0 5px rgb(255, 8, 0);
+}
+
+.yellow.glowing {
+    box-shadow: 1px 1px 2px black, 0 0 25px rgb(178, 197, 36), 0 0 5px rgb(255, 251, 0);
+}
+
+.green.glowing {
+    box-shadow: 1px 1px 2px black, 0 0 25px rgb(37, 154, 51), 0 0 5px rgb(21, 255, 0);
+}
+#full-game button {
+    padding: 60px;
+    font-size: 2em;
+    text-decoration: none;
+    border: 1px black solid;
+    cursor: pointer;
+    margin: 30px;
+}

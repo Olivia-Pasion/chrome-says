@@ -16,6 +16,8 @@ import { checkProfile, protectPage } from '../utils.js';
 //     }
 // });
 
+
+//State
 let playerScore = 0;
 let user = null;
 let userOrder = [];
@@ -26,11 +28,11 @@ let level = 0;
 
 function gameRestart() {
 
-    let playerScore = 0;
-    let userOrder = [];
-    let correctOrder = [];
-    let gameStarted = false;
-    let level = 0;
+    playerScore = 0;
+    userOrder = [];
+    correctOrder = [];
+    gameStarted = false;
+    level = 0;
 
 }
 
@@ -43,19 +45,34 @@ async function handlePageLoad() {
   
 }
 
-function checkOrder() {
-    if (userOrder === correctOrder) {
-        playerScore++;
-    }
-    else {
-        gameRestart();
-    }
-}
+const buttonSelector = document.getElementById('full-game');
+const [blueButton, redButton, yellowButton, greenButton] = buttonSelector.querySelectorAll('button');
 
-function gameRead(playerScore) {
-    level = playerScore++;
+//clean up later if get a chance
 
-}
+//Players-Input
+blueButton.addEventListener('click', () => {
+    userOrder.push('blue');
+    checkLength();
+    console.log(userOrder);
+});
+redButton.addEventListener('click', () => {
+    userOrder.push('red');
+    checkLength();
+    console.log(userOrder);
+});
+yellowButton.addEventListener('click', () => {
+    userOrder.push('yellow');
+    checkLength();
+    console.log(userOrder);
+});
+greenButton.addEventListener('click', () => {
+    userOrder.push('green');
+    checkLength();
+    console.log(userOrder);
+});
+
+//Calculators
 
 function generateOrder() {
     const randomNumber = Math.floor(Math.random() * 4) + 1;
@@ -75,13 +92,46 @@ function generateOrder() {
         
 }
 
-function orderDisplay(level) {
+function checkLength() {
+
+    if (userOrder.length === correctOrder.length) {
+        checkOrder();
+        console.log(userOrder.length, correctOrder.length);
+    } else if (userOrder.length > correctOrder.length) {
+        gameRestart();
+    }
+}
+
+
+async function checkOrder() {
+    console.log(playerScore);
+    for (let i = 0; i < correctOrder.length; i++) {
+        if (userOrder[i] !== correctOrder[i]) {
+            gameRestart();
+            return;
+        }
+    }
+    playerScore++;
+    await orderDisplay();
+    console.log(playerScore);
+}
+
+async function gameRead() {
+    level = playerScore + 1;
+    userOrder = [];
+    correctOrder = [];
+}
+
+async function orderDisplay() {
+    await gameRead();
     for (let i = 0; i < level; i++) {
         generateOrder();
     } 
-
+    
     console.log(correctOrder);
 }
+
+//Display
 
 function display() {
     gameRead();
