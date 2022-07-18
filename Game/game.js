@@ -52,22 +52,22 @@ const [blueButton, redButton, yellowButton, greenButton] = buttonSelector.queryS
 
 //Players-Input
 blueButton.addEventListener('click', () => {
-    userOrder.push('blue');
+    userOrder.push(1);
     checkLength();
     console.log(userOrder);
 });
 redButton.addEventListener('click', () => {
-    userOrder.push('red');
+    userOrder.push(2);
     checkLength();
     console.log(userOrder);
 });
 yellowButton.addEventListener('click', () => {
-    userOrder.push('yellow');
+    userOrder.push(3);
     checkLength();
     console.log(userOrder);
 });
 greenButton.addEventListener('click', () => {
-    userOrder.push('green');
+    userOrder.push(4);
     checkLength();
     console.log(userOrder);
 });
@@ -76,18 +76,21 @@ greenButton.addEventListener('click', () => {
 
 function generateOrder() {
     const randomNumber = Math.floor(Math.random() * 4) + 1;
-
+// blue
     if (randomNumber === 1) {
-        correctOrder.push('blue');
+        correctOrder.push(1);
     } 
+// red
     if (randomNumber === 2) {
-        correctOrder.push('red');
+        correctOrder.push(2);
     }
+// yellow
     if (randomNumber === 3) {
-        correctOrder.push('yellow');
+        correctOrder.push(3);
     }
+// green
     if (randomNumber === 4) {
-        correctOrder.push('green');
+        correctOrder.push(4);
     }
         
 }
@@ -122,16 +125,40 @@ async function gameRead() {
     correctOrder = [];
 }
 
+
+
 async function orderDisplay() {
     await gameRead();
     for (let i = 0; i < level; i++) {
         generateOrder();
     } 
-    
+    buttonLightUp();
     console.log(correctOrder);
 }
 
+// const index = correctOrder.indexOf(order);
+
 //Display
+async function buttonLightUp() {
+    console.log(correctOrder); 
+        // let i = 1;
+    for (let i = 0; i < correctOrder.length; i++) {
+        console.log(i);
+        if (correctOrder[i] === 1) {
+            blueButton.classList.add('glowing');
+        }
+        else if (correctOrder[i] === 2) {
+            redButton.classList.add('glowing');
+        }
+        else if (correctOrder[i] === 3) {
+            yellowButton.classList.add('glowing');
+        }
+        else if (correctOrder[i] === 4) {
+            greenButton.classList.add('glowing');
+        }
+    }
+}
+
 
 function display() {
     gameRead();
