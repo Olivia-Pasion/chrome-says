@@ -87,6 +87,8 @@ async function handlePageLoad() {
     difficulty = localStorage.getItem('difficulty');
     checkDifficulty(difficulty);
     setDifficulty();
+    
+    disablePlayerInput();
 }
 
 function setDifficulty() {
