@@ -10,21 +10,118 @@
 --light-cyan: #caf0f8ff;
 }
 
-.blue.glowing {
-    box-shadow: 1px 1px 2px black, 0 0 25px rgb(26, 32, 155), 0 0 5px rgb(0, 51, 255);
+
+h2 {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 0;
+    margin-top: 0;
+    line-height: 1;
+    text-decoration: none;
+    color: black;
+    animation: leaderboardFlash 2.5s ease-in-out infinite alternate;
 }
+
+@keyframes leaderboardFlash {
+    from {
+      text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px green,
+        0 0 35px green, 0 0 35px purple, 0 0 35px blue, 0 0 135px green;
+    }
+    to {
+      text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px yellow,
+        0 0 35px yellow, 0 0 40px red, 0 0 50px red, 0 0 75px yellow;
+    }
+  }
+
+.blue.glowing {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 0;
+    margin-top: 0;
+    line-height: 1;
+    text-decoration: none;
+    color: blue;
+    animation: blueButtonFlash 2.5s ease-in-out infinite alternate;
+}
+
+
+@keyframes blueButtonFlash {
+    from {
+      box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px blue,
+        0 0 75px blue, 0 0 80px blue, 0 0 100px blue, 0 0 150px blue;
+    }
+    to {
+      box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px lightblue,
+        0 0 85px lightblue, 0 0 85px lightblue, 0 0 85px lightblue, 0 0 85px lightblue;
+    }
+  }
 
 .red.glowing {
-    box-shadow: 1px 1px 2px black, 0 0 25px rgb(154, 21, 21), 0 0 5px rgb(255, 8, 0);
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 0;
+    margin-top: 0;
+    line-height: 1;
+    text-decoration: none;
+    color: red;
+    animation: redButtonFlash 2.5s ease-in-out infinite alternate;
 }
+
+@keyframes redButtonFlash {
+    from {
+      box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px red,
+        0 0 75px red, 0 0 80px red, 0 0 100px red, 0 0 150px red;
+    }
+    to {
+      box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px lightcoral,
+        0 0 85px lightcoral, 0 0 85px lightcoral, 0 0 85px lightcoral, 0 0 85px lightcoral;
+    }
+  }
 
 .yellow.glowing {
-    box-shadow: 1px 1px 2px black, 0 0 25px rgb(178, 197, 36), 0 0 5px rgb(255, 251, 0);
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 0;
+    margin-top: 0;
+    line-height: 1;
+    text-decoration: none;
+    color: yellow;
+    animation: yellowButtonFlash 2.5s ease-in-out infinite alternate;
 }
 
+@keyframes yellowButtonFlash {
+    from {
+      box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px yellow,
+        0 0 75px yellow, 0 0 80px yellow, 0 0 100px yellow, 0 0 150px yellow;
+    }
+    to {
+      box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px lightgoldenrodyellow,
+        0 0 85px lightgoldenrodyellow, 0 0 85px lightgoldenrodyellow, 0 0 85px lightgoldenrodyellow, 0 0 85px lightgoldenrodyellow;
+    }
+  }
+
 .green.glowing {
-    box-shadow: 1px 1px 2px black, 0 0 25px rgb(37, 154, 51), 0 0 5px rgb(21, 255, 0);
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 0;
+    margin-top: 0;
+    line-height: 1;
+    text-decoration: none;
+    color: green;
+    animation: greenButtonFlash 2.5s ease-in-out infinite alternate;
 }
+
+@keyframes greenButtonFlash {
+    from {
+        box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px green,
+          0 0 75px green, 0 0 80px green, 0 0 100px green, 0 0 150px green;
+      }
+      to {
+        box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px lightgreen,
+          0 0 85px lightgreen, 0 0 85px lightgreen, 0 0 85px lightgreen, 0 0 85px lightgreen;
+      }
+    }
+
 #full-game button {
     padding: 60px;
     font-size: 2em;

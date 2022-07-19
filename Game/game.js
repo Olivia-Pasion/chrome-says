@@ -73,11 +73,14 @@ function enablePlayerInput() {
 
 async function gameOver(score) {
     await handleSubmitScore(profile.id, score);
+    
     localStorage.removeItem('difficulty');
     location.replace('/');
 }
 
 async function handlePageLoad() {
+    disablePlayerInput();
+
     user = await getUser();
     protectPage(user);
     
@@ -249,7 +252,11 @@ async function buttonsLightUp() {
 }
 
 readyButton.addEventListener('click', () => {
+    readyButton.classList.add('hidden');
+    readyButton.disabled = true;
     orderDisplay();
+    readyButton.classlist.add('hidden');
+    readyButton.disabled = true;
 });
 
 
