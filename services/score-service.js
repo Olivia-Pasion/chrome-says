@@ -8,7 +8,8 @@ export async function getLeaderBoard() {
         .select(`
             *,
             userProfile:simon-user-profiles(*)
-        `);
+        `)
+        .order('score', { ascending: false });
     
     return response.data;
 }
