@@ -20,6 +20,7 @@ import { handleSubmitScore } from '../services/score-service.js';
 
 //State
 
+let difficultyMultiplier = 0;
 let playerScore = 0;
 let user = null;
 let userOrder = [];
@@ -72,6 +73,7 @@ function enablePlayerInput() {
 
 
 async function gameOver() {
+    playerScore = playerScore * difficultyMultiplier;
     await handleSubmitScore(profile.id, playerScore);
     
     localStorage.removeItem('difficulty');
@@ -98,12 +100,15 @@ function setDifficulty() {
     if (difficulty === 'easy') {
         defaultTimer = 1500;
         glowTimer = 1250;
+        difficultyMultiplier = 1;
     } else if (difficulty === 'medium') {
         defaultTimer = 1250;
         glowTimer = 1000;
+        difficultyMultiplier = 1.5;
     } else if (difficulty === 'hard') {
         defaultTimer = 1000;
         glowTimer = 750;
+        difficultyMultiplier = 2;
     }
 }
 // function increaseScore() {
@@ -168,7 +173,7 @@ function increaseScore() {
 
 function displayCurrentScore() {
     let currentScore = document.getElementById('player-current-score');
-    currentScore.textContent = playerScore;
+    currentScore.textContent = playerScore * difficultyMultiplier;
 
 }
 
