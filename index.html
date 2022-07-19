@@ -5,7 +5,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="icon" type="image/x-icon" href="./assets/alchemy-favicon.png" />
     <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,19 +13,39 @@
     <link rel="stylesheet" href="./styles/reset.css" />
     <link rel="stylesheet" href="./styles/main.css" />
     <link rel="stylesheet" href="./styles/home.css" />
-    <title>Cool Web App</title>
+    <title>Chrome Says</title>
 </head>
 
 <body>
     <header>
-        <img src="./assets/html_css_js.png">
-        <h1>Cool Web App</h1>
+        <h1>Chrome Says</h1>
         <div id="user"></div>
+        <a href="./Profile">profile</a>
+        <a href="./Game">game</a>
     </header>
 
     <main>
-
-    </main>
+        <section id="user-buttons">
+            <div id="theme-type">
+                <button class="light-mode">Light Mode</button>
+                <button class="dark-mode">Dark Mode</button>
+            </div>
+        </section>
+        <section id="board-display">
+            <h2>Leader Board</h2>
+            <p>Player High Score:
+                <p id="player-high-score">100</p>
+            </p>
+            <ul id="leader-board"></ul>
+        </section>
+        <section id="difficulty-container">
+            <div id="difficulty">
+                <button class="easy level" >Easy</button>
+                <button class="medium level">Medium</button>
+                <button class="hard level">Hard</button>
+                <button disabled><a>GO</a></button>
+            </div>
+        </section>
 
     <footer>&copy;2022 Aspiring Software Developer</footer>
 

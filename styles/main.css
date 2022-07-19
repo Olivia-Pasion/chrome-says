@@ -1,20 +1,35 @@
+*{
+    --midnight-blue: #03045eff;
+--dark-cornflower-blue: #023e8aff;
+--star-command-blue: #0077b6ff;
+--blue-green: #0096c7ff;
+--pacific-blue: #00b4d8ff;
+--sky-blue-crayola: #48cae4ff;
+--middle-blue: #90e0efff;
+--blizzard-blue: #ade8f4ff;
+--light-cyan: #caf0f8ff;
+}
+
 :root {
-    --background: rgb(224, 234, 247);
-    --header-background: white;
-    --footer-background: rgb(243, 242, 242);
+    --header-background: var(--middle-blue);
+    
 }
 
 body {
     height: 100%;
     padding-bottom: 30px;
     font-family: 'Rubik', san-serif;
-    background: var(--background);
+    background: rgb(177,205,239);
+    background: radial-gradient(circle, rgba(177,205,239,1) 0%, rgba(59,117,185,1) 100%);
 }
 
 header {
+    padding: 10px;
     position: sticky;
     top: 0;
     display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
     align-items: center;
     background-color: var(--header-background);
 }
@@ -47,5 +62,5 @@ footer {
     padding: 10px;
     display: flex;
     justify-content: flex-end;
-    background-color: var(--footer-background);
+    
 }

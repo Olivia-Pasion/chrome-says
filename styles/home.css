@@ -1,0 +1,102 @@
+*{
+    --midnight-blue: #03045eff;
+--dark-cornflower-blue: #023e8aff;
+--star-command-blue: #0077b6ff;
+--blue-green: #0096c7ff;
+--pacific-blue: #00b4d8ff;
+--sky-blue-crayola: #48cae4ff;
+--middle-blue: #90e0efff;
+--blizzard-blue: #ade8f4ff;
+--light-cyan: #caf0f8ff;
+}
+
+.blue.glowing {
+    box-shadow: 1px 1px 2px black, 0 0 25px rgb(26, 32, 155), 0 0 5px rgb(0, 51, 255);
+}
+
+.red.glowing {
+    box-shadow: 1px 1px 2px black, 0 0 25px rgb(154, 21, 21), 0 0 5px rgb(255, 8, 0);
+}
+
+.yellow.glowing {
+    box-shadow: 1px 1px 2px black, 0 0 25px rgb(178, 197, 36), 0 0 5px rgb(255, 251, 0);
+}
+
+.green.glowing {
+    box-shadow: 1px 1px 2px black, 0 0 25px rgb(37, 154, 51), 0 0 5px rgb(21, 255, 0);
+}
+#full-game button {
+    padding: 60px;
+    font-size: 2em;
+    text-decoration: none;
+    border: 1px black solid;
+    cursor: pointer;
+    margin: 30px;
+}
+
+#user-buttons {
+    grid-area: buttons;
+}
+
+#board-display h2 {
+    grid-area: h2;
+}
+
+#board-display {
+    grid-area: leader-board;
+
+    display: grid;
+    grid-template-rows: min-content min-content 1fr;
+    grid-template-areas:
+        "h2  h2"
+        
+    ;
+
+    background-color: white;
+    padding: 60px;
+    box-shadow: 10px 7px 17px rgba(0, 0, 0, 0.369), 10px 7px 17px rgba(0, 0, 0, 0.369);
+    border: 1px solid;
+    border-radius: 50px;
+}
+
+#difficulty-container {
+    grid-area: difficulty; 
+
+    background-color: white;
+    padding: 45px;
+
+    box-shadow: 10px 7px 17px rgba(0, 0, 0, 0.369), 10px 7px 17px rgba(0, 0, 0, 0.369);
+    border: 1px solid;
+    border-radius: 50px;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: min-content 1fr;
+    grid-template-areas: 
+        "buttons  buttons"
+        "leader-board  difficulty"
+    ;
+    justify-content: start;
+    justify-items: center;
+    align-items: start;
+    row-gap: 25px;
+
+    margin: 35px;
+}
+
+#difficulty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+
+    padding: 30px
+ 
+}
+
+#difficulty button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
