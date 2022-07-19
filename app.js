@@ -2,8 +2,17 @@ import { getUser, signOut } from './services/auth-service.js';
 import { protectPage } from './utils.js';
 import createUser from './components/User.js';
 
+//Score Service
+import { getLeaderBoard, handleSubmitScore } from './services/score-service.js';
+
+
+//Components
+import createLeaderBoard from './components/LeaderBoard.js';
+
+
 // State
 let user = null;
+let scores = [];
 
 const body = document.querySelector('body');
 const darkModeButton = document.querySelector('.dark-mode');
@@ -36,8 +45,10 @@ darkModeButton.addEventListener('click', () => {
 
 // Action Handlers
 async function handlePageLoad() {
-    user = getUser();
-    protectPage(user);
+    user = await getUser();
+    if (protectPage(user)) return;
+
+    scores = await getLeaderBoard() ?? [];
 
     display();
 }
@@ -46,15 +57,25 @@ async function handleSignOut() {
     signOut();
 }
 
-// Components 
+// Realtime function
+
+function realtimeAddScore(score) {
+    scores.unshift(score);
+    display();
+}
+
+// DOM Components 
 
 const User = createUser(
     document.querySelector('#user'),
     { handleSignOut }
 );
 
+const LeaderBoard = createLeaderBoard(document.querySelector('#leader-board'), { handleSubmitScore });
+
 function display() {
     User({ user });
+    LeaderBoard({ scores });
 
 }
 
