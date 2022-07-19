@@ -22,7 +22,7 @@ export async function updateLeaderBoard(newScore) {
     return response.data;
 }
 
-export async function handleSubmitScore(playerScore, profile_id) {
+export async function handleSubmitScore(profile_id, playerScore) {
     const response = await client
         .from('leaderboard')
         .insert({

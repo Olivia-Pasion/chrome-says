@@ -44,7 +44,6 @@ h2 {
     animation: blueButtonFlash 2.5s ease-in-out infinite alternate;
 }
 
-
 @keyframes blueButtonFlash {
     from {
       box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px blue,
@@ -85,7 +84,7 @@ h2 {
     margin-top: 0;
     line-height: 1;
     text-decoration: none;
-    color: yellow;
+    color: darkgoldenrod;
     animation: yellowButtonFlash 2.5s ease-in-out infinite alternate;
 }
 
