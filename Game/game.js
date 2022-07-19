@@ -73,8 +73,8 @@ function enablePlayerInput() {
 
 async function gameOver(score) {
     await handleSubmitScore(profile.id, score);
-    localStorage.clear();
-    location.replace('../');
+    localStorage.removeItem('difficulty');
+    location.replace('/');
 }
 
 async function handlePageLoad() {
@@ -167,13 +167,13 @@ function displayCurrentScore() {
 
 }
 
-function checkLength() {
+async function checkLength() {
 
     if (userOrder.length === correctOrder.length) {
         checkOrder();
         //console.log(userOrder.length, correctOrder.length);
     } else if (userOrder.length > correctOrder.length) {
-        gameOver();
+        await gameOver(playerScore);
     }
 }
 
@@ -182,7 +182,7 @@ async function checkOrder() {
     
     for (let i = 0; i < correctOrder.length; i++) {
         if (userOrder[i] !== correctOrder[i]) {
-            gameOver();
+            await gameOver(playerScore);
             return;
         }
     }

@@ -46,9 +46,10 @@ darkModeButton.addEventListener('click', () => {
 // Action Handlers
 async function handlePageLoad() {
     user = await getUser();
-    if (protectPage(user)) return;
+    protectPage(user);
 
-    scores = await getLeaderBoard() ?? [];
+    scores = await getLeaderBoard();
+    console.log(scores);
 
     display();
 }
@@ -71,8 +72,7 @@ const User = createUser(
     { handleSignOut }
 );
 
-const LeaderBoard = createLeaderBoard(document.querySelector('#leader-board'), { handleSubmitScore });
-
+const LeaderBoard = createLeaderBoard(document.querySelector('#leader-board'));
 function display() {
     User({ user });
     LeaderBoard({ scores });
