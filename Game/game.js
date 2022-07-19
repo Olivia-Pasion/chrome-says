@@ -250,6 +250,8 @@ async function buttonsLightUp() {
 }
 
 readyButton.addEventListener('click', () => {
+    readyButton.classList.add('hidden');
+    readyButton.disabled = true;
     orderDisplay();
     readyButton.classlist.add('hidden');
     readyButton.disabled = true;
