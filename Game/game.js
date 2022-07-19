@@ -19,7 +19,7 @@ import { handleSubmitScore } from '../services/score-service.js';
 
 
 //State
-
+let theme = localStorage.getItem('theme');
 let difficultyMultiplier = 0;
 let playerScore = 0;
 let user = null;
@@ -31,6 +31,8 @@ let difficulty = null;
 let defaultTimer = null;
 let glowTimer = null;
 
+const header = document.querySelector('header');
+const body = document.querySelector('body');
 const readyButton = document.querySelector('#ready');
 
 
@@ -92,8 +94,18 @@ async function handlePageLoad() {
     difficulty = localStorage.getItem('difficulty');
     checkDifficulty(difficulty);
     setDifficulty();
-    
+    handleTheme();
     disablePlayerInput();
+}
+
+function handleTheme() {
+    if (theme === 'dark') {
+        body.classList.add('dark-body');
+        header.classList.add('dark-header');
+    } else {
+        body.classList.remove('dark-body');
+        header.classList.remove('dark-header');
+    }
 }
 
 function setDifficulty() {
