@@ -23,3 +23,13 @@ export async function updateLeaderBoard(newScore) {
 
     return response.data;
 }
+
+export async function handleSubmitScore(playerScore, profile) {
+    const response = await client
+        .from('leaderboard')
+        .select(`*`)
+        .eq('profile_id', profile.id)
+        .insert('score', playerScore);
+
+    return response.data;
+}
