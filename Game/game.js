@@ -68,7 +68,8 @@ function enablePlayerInput() {
 }
 
 
-async function gameRestart() {
+async function gameOver() {
+    const newScore = 
     await handleSubmitScore(playerScore, profile);
     location.replace('./');
 }
@@ -154,7 +155,7 @@ function checkLength() {
         checkOrder();
         //console.log(userOrder.length, correctOrder.length);
     } else if (userOrder.length > correctOrder.length) {
-        gameRestart();
+        gameOver();
     }
 }
 
@@ -163,7 +164,7 @@ async function checkOrder() {
     
     for (let i = 0; i < correctOrder.length; i++) {
         if (userOrder[i] !== correctOrder[i]) {
-            gameRestart();
+            gameOver();
             return;
         }
     }

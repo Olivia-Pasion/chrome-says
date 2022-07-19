@@ -18,7 +18,6 @@ export async function updateLeaderBoard(newScore) {
 
     const response = await client
         .from('leaderboard')
-        .select()
         .insert(newScore);
 
     return response.data;
