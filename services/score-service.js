@@ -10,12 +10,11 @@ export async function getLeaderBoard() {
         profile_id,
         score
         `);
-
+    
     return response.data;
 }
 
 export async function updateLeaderBoard(newScore) {
-
     const response = await client
         .from('leaderboard')
         .insert(newScore);
@@ -23,12 +22,13 @@ export async function updateLeaderBoard(newScore) {
     return response.data;
 }
 
-export async function handleSubmitScore(playerScore, profile) {
+export async function handleSubmitScore(playerScore, profile_id) {
     const response = await client
         .from('leaderboard')
-        .select(`*`)
-        .eq('profile_id', profile.id)
-        .insert('score', playerScore);
+        .insert({
+            profile_id: profile_id,
+            score: playerScore
+        });
 
     return response.data;
 }

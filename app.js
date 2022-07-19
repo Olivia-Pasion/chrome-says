@@ -7,6 +7,22 @@ let user = null;
 
 const body = document.querySelector('body');
 const darkModeButton = document.querySelector('.dark-mode');
+const easy = document.querySelector('.easy');
+const medium = document.querySelector('.medium');
+const hard = document.querySelector('.hard');
+
+easy.addEventListener('click', () => {
+    localStorage.setItem('difficulty', 'easy');
+    location.replace('./Game/index.html');
+});
+medium.addEventListener('click', () => {
+    localStorage.setItem('difficulty', 'medium');
+    location.replace('./Game/index.html');
+});
+hard.addEventListener('click', () => {
+    localStorage.setItem('difficulty', 'hard');
+    location.replace('./Game/index.html');
+});
 
 darkModeButton.addEventListener('click', () => {
     if (body.classList.contains('dark') === true) {
@@ -15,6 +31,8 @@ darkModeButton.addEventListener('click', () => {
         body.classList.add('dark');
     }
 });
+
+
 
 // Action Handlers
 async function handlePageLoad() {
