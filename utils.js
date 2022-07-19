@@ -19,3 +19,9 @@ export async function checkProfile(profile) {
         location.replace(`profiles/index.html`);
     }
 }
+
+export async function checkDifficulty(difficulty) {
+    if (!difficulty) {
+        location.replace(`../`);
+    }
+}

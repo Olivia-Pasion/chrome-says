@@ -1,6 +1,6 @@
 import { getUser } from '../services/auth-service.js';
 import { getProfile } from '../services/profile-service.js';
-import { checkProfile, protectPage } from '../utils.js';
+import { checkDifficulty, checkProfile, protectPage } from '../utils.js';
 import { handleSubmitScore } from '../services/score-service.js';
 
 
@@ -26,6 +26,9 @@ let userOrder = [];
 let correctOrder = [];
 let profile = null;
 let level = 0;
+let difficulty = null;
+let defaultTimer = null;
+let glowTimer = null;
 
 const readyButton = document.querySelector('#ready');
 
@@ -68,9 +71,10 @@ function enablePlayerInput() {
 }
 
 
-async function gameRestart() {
-    await handleSubmitScore(playerScore, profile);
-    location.replace('./');
+async function gameOver(score) {
+    await handleSubmitScore(profile.id, score);
+    localStorage.removeItem('difficulty');
+    location.replace('/');
 }
 
 async function handlePageLoad() {
@@ -79,9 +83,24 @@ async function handlePageLoad() {
     
     profile = await getProfile();
     checkProfile(profile);
-  
+
+    difficulty = localStorage.getItem('difficulty');
+    checkDifficulty(difficulty);
+    setDifficulty();
 }
 
+function setDifficulty() {
+    if (difficulty === 'easy') {
+        defaultTimer = 1500;
+        glowTimer = 1250;
+    } else if (difficulty === 'medium') {
+        defaultTimer = 1250;
+        glowTimer = 1000;
+    } else if (difficulty === 'hard') {
+        defaultTimer = 1000;
+        glowTimer = 750;
+    }
+}
 // function increaseScore() {
 //     let currentScore = 
 //     playerScore++;
@@ -148,13 +167,13 @@ function displayCurrentScore() {
 
 }
 
-function checkLength() {
+async function checkLength() {
 
     if (userOrder.length === correctOrder.length) {
         checkOrder();
         //console.log(userOrder.length, correctOrder.length);
     } else if (userOrder.length > correctOrder.length) {
-        gameRestart();
+        await gameOver(playerScore);
     }
 }
 
@@ -163,7 +182,7 @@ async function checkOrder() {
     
     for (let i = 0; i < correctOrder.length; i++) {
         if (userOrder[i] !== correctOrder[i]) {
-            gameRestart();
+            await gameOver(playerScore);
             return;
         }
     }
@@ -199,7 +218,7 @@ async function buttonsLightUp() {
         createDelay(i);
         if (i === correctOrder.length - 1) {
             let inputDelay = i + 1; 
-            setTimeout(function(){enablePlayerInput();}, inputDelay * 1000);
+            setTimeout(function(){enablePlayerInput();}, inputDelay * defaultTimer);
             console.log(userOrder);
         }
     } 
@@ -208,26 +227,28 @@ async function buttonsLightUp() {
         setTimeout(function() {
             if (correctOrder[i] === 1) {
                 blueButton.classList.add('glowing');
-                setTimeout(function(){blueButton.classList.remove('glowing');}, 750);
+                setTimeout(function(){blueButton.classList.remove('glowing');}, glowTimer);
             }
             else if (correctOrder[i] === 2) {
                 redButton.classList.add('glowing');
-                setTimeout(function(){redButton.classList.remove('glowing');}, 750);
+                setTimeout(function(){redButton.classList.remove('glowing');}, glowTimer);
             }
             else if (correctOrder[i] === 3) {
                 yellowButton.classList.add('glowing');
-                setTimeout(function(){yellowButton.classList.remove('glowing');}, 750);
+                setTimeout(function(){yellowButton.classList.remove('glowing');}, glowTimer);
             }
             else if (correctOrder[i] === 4) {
                 greenButton.classList.add('glowing');
-                setTimeout(function(){greenButton.classList.remove('glowing');}, 750);
+                setTimeout(function(){greenButton.classList.remove('glowing');}, glowTimer);
             }
-        }, 1000 * i);
+        }, defaultTimer * i);
     }
     
 }
 
 readyButton.addEventListener('click', () => {
+    readyButton.classList.add('hidden');
+    readyButton.disabled = true;
     orderDisplay();
 });
 
