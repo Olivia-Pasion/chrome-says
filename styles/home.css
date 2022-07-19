@@ -100,3 +100,30 @@ main {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+#full-game {
+    display: grid;
+    grid-template-areas: 
+    'blueQ redW'
+    'yellowA greenS';
+}
+
+.blue {
+    grid-area: blueQ;
+    background-color: lightblue;
+}
+
+.red {
+    grid-area: redW;
+    background-color: lightcoral;
+}
+
+.yellow {
+    grid-area: yellowA;
+    background-color: yellow;
+}
+
+.green {
+    grid-area: greenS;
+    background-color: lightgreen;
+} 
