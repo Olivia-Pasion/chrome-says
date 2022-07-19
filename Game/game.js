@@ -19,7 +19,8 @@ import { handleSubmitScore } from '../services/score-service.js';
 
 
 //State
-
+let theme = localStorage.getItem('theme');
+let difficultyMultiplier = 0;
 let playerScore = 0;
 let user = null;
 let userOrder = [];
@@ -30,6 +31,8 @@ let difficulty = null;
 let defaultTimer = null;
 let glowTimer = null;
 
+const header = document.querySelector('header');
+const body = document.querySelector('body');
 const readyButton = document.querySelector('#ready');
 
 
@@ -71,8 +74,9 @@ function enablePlayerInput() {
 }
 
 
-async function gameOver(score) {
-    await handleSubmitScore(profile.id, score);
+async function gameOver() {
+    playerScore = playerScore * difficultyMultiplier;
+    await handleSubmitScore(profile.id, playerScore);
     
     localStorage.removeItem('difficulty');
     location.replace('/');
@@ -90,20 +94,33 @@ async function handlePageLoad() {
     difficulty = localStorage.getItem('difficulty');
     checkDifficulty(difficulty);
     setDifficulty();
-    
+    handleTheme();
     disablePlayerInput();
+}
+
+function handleTheme() {
+    if (theme === 'dark') {
+        body.classList.add('dark-body');
+        header.classList.add('dark-header');
+    } else {
+        body.classList.remove('dark-body');
+        header.classList.remove('dark-header');
+    }
 }
 
 function setDifficulty() {
     if (difficulty === 'easy') {
         defaultTimer = 1500;
         glowTimer = 1250;
+        difficultyMultiplier = 1;
     } else if (difficulty === 'medium') {
         defaultTimer = 1250;
         glowTimer = 1000;
+        difficultyMultiplier = 1.5;
     } else if (difficulty === 'hard') {
         defaultTimer = 1000;
         glowTimer = 750;
+        difficultyMultiplier = 2;
     }
 }
 // function increaseScore() {
@@ -168,7 +185,7 @@ function increaseScore() {
 
 function displayCurrentScore() {
     let currentScore = document.getElementById('player-current-score');
-    currentScore.textContent = playerScore;
+    currentScore.textContent = playerScore * difficultyMultiplier;
 
 }
 

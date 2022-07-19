@@ -1,0 +1,38 @@
+*{
+    --midnight-blue: #03045eff;
+--dark-cornflower-blue: #023e8aff;
+--star-command-blue: #0077b6ff;
+--blue-green: #0096c7ff;
+--pacific-blue: #00b4d8ff;
+--sky-blue-crayola: #48cae4ff;
+--middle-blue: #90e0efff;
+--blizzard-blue: #ade8f4ff;
+--light-cyan: #caf0f8ff;
+}
+
+.dark-body {
+    height: 100%;
+    padding-bottom: 30px;
+    font-family: 'Rubik', san-serif;
+    background: rgb(60, 106, 163);
+    background: radial-gradient(circle, rgb(72, 83, 97) 0%, rgba(59,117,185,1) 100%);
+    color: rgb(195, 194, 194);
+}
+
+.dark-header {
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--dark-cornflower-blue);
+    color: rgb(195, 194, 194)
+}
+
+.dark-section {
+    background-color: rgb(69, 69, 69);
+    background-color: rgb(205, 205, 205);
+}
+
