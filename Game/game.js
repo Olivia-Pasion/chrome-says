@@ -1,6 +1,7 @@
 import { getUser } from '../services/auth-service.js';
 import { getProfile } from '../services/profile-service.js';
 import { checkProfile, protectPage } from '../utils.js';
+import { handleSubmitScore } from '../services/score-service.js';
 
 
 
@@ -18,28 +19,62 @@ import { checkProfile, protectPage } from '../utils.js';
 
 
 //State
+
 let playerScore = 0;
 let user = null;
 let userOrder = [];
 let correctOrder = [];
-let gameStarted = false;
 let profile = null;
 let level = 0;
-let playerTurn = false;
 
-function gameRestart() {
+const readyButton = document.querySelector('#ready');
 
-    playerScore = 0;
-    userOrder = [];
-    correctOrder = [];
-    gameStarted = false;
-    level = 0;
-    playerTurn = false;
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'q') {
+        blueButton.click();
+    }
+});
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'w') {
+        redButton.click();
+    }
+});
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'a') {
+        yellowButton.click();
+    }
+});
+document.addEventListener('keydown', function(e) {
+    if (e.key === 's') {
+        greenButton.click();
+    }
+});
+
+function disablePlayerInput() {
+
+    blueButton.disabled = true;
+    greenButton.disabled = true;
+    yellowButton.disabled = true;
+    redButton.disabled = true;
+}
+
+function enablePlayerInput() {
+    blueButton.disabled = false;
+    greenButton.disabled = false;
+    yellowButton.disabled = false;
+    redButton.disabled = false;
 
 }
 
+
+async function gameRestart() {
+    await handleSubmitScore(playerScore, profile);
+    location.replace('./');
+}
+
 async function handlePageLoad() {
-    user = getUser();
+    user = await getUser();
     protectPage(user);
     
     profile = await getProfile();
@@ -58,6 +93,7 @@ const [blueButton, redButton, yellowButton, greenButton] = buttonSelector.queryS
 //clean up later if get a chance
 
 //Players-Input
+
 blueButton.addEventListener('click', () => {
     userOrder.push(1);
     checkLength();
@@ -150,6 +186,7 @@ async function orderDisplay() {
     for (let i = 0; i < level; i++) {
         generateOrder();
     } 
+    disablePlayerInput();
     buttonsLightUp();
     console.log(correctOrder);
 }
@@ -158,41 +195,42 @@ async function orderDisplay() {
 
 //Display
 async function buttonsLightUp() {
-    console.log(correctOrder); 
-    playerTurn = false;
     for (let i = 0; i < correctOrder.length; i++) {
-
-     
-
         createDelay(i);
-        
-
+        if (i === correctOrder.length - 1) {
+            let inputDelay = i + 1; 
+            setTimeout(function(){enablePlayerInput();}, inputDelay * 1000);
+            console.log(userOrder);
+        }
     } 
+
     function createDelay(i) {
         setTimeout(function() {
-           
-
             if (correctOrder[i] === 1) {
                 blueButton.classList.add('glowing');
-                setTimeout(function(){blueButton.classList.remove('glowing');}, 500);
+                setTimeout(function(){blueButton.classList.remove('glowing');}, 750);
             }
             else if (correctOrder[i] === 2) {
                 redButton.classList.add('glowing');
-                setTimeout(function(){redButton.classList.remove('glowing');}, 500);
+                setTimeout(function(){redButton.classList.remove('glowing');}, 750);
             }
             else if (correctOrder[i] === 3) {
                 yellowButton.classList.add('glowing');
-                setTimeout(function(){yellowButton.classList.remove('glowing');}, 500);
+                setTimeout(function(){yellowButton.classList.remove('glowing');}, 750);
             }
             else if (correctOrder[i] === 4) {
                 greenButton.classList.add('glowing');
-                setTimeout(function(){greenButton.classList.remove('glowing');}, 500);
+                setTimeout(function(){greenButton.classList.remove('glowing');}, 750);
             }
-            console.log(i);
         }, 1000 * i);
     }
     
 }
+
+readyButton.addEventListener('click', () => {
+    orderDisplay();
+});
+
 
 
 
@@ -201,5 +239,5 @@ function display() {
     // orderDisplay();
     displayCurrentScore();
 }
-orderDisplay();
 display();
+handlePageLoad();
