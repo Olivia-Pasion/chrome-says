@@ -71,8 +71,8 @@ function enablePlayerInput() {
 }
 
 
-async function gameOver(score) {
-    await handleSubmitScore(profile.id, score);
+async function gameOver() {
+    await handleSubmitScore(profile.id, playerScore);
     
     localStorage.removeItem('difficulty');
     location.replace('/');
