@@ -3,7 +3,7 @@ import { protectPage } from './utils.js';
 import createUser from './components/User.js';
 
 //Score Service
-import { getLeaderBoard, handleSubmitScore } from './services/score-service.js';
+import { getLeaderBoard } from './services/score-service.js';
 import { getProfile } from './services/profile-service.js';
 
 
