@@ -195,6 +195,7 @@ async function checkLength() {
         checkOrder();
         //console.log(userOrder.length, correctOrder.length);
     } else if (userOrder.length > correctOrder.length) {
+        disablePlayerInput();
         await gameOver(playerScore);
     }
 }

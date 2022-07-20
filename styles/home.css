@@ -115,6 +115,17 @@ h2 {
     animation: greenButtonFlash 2.5s ease-in-out infinite alternate;
 }
 
+.glowing:hover {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 0;
+    margin-top: 0;
+    line-height: 1;
+    text-decoration: none;
+    color: green;
+    animation: greenButtonFlash 2.5s ease-in-out infinite alternate;
+}
+
 @keyframes greenButtonFlash {
     from {
         box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px green,
@@ -145,7 +156,6 @@ h2 {
 
 #board-display {
     grid-area: leader-board;
-
     display: grid;
     grid-template-rows: min-content min-content 1fr;
     grid-template-areas:
