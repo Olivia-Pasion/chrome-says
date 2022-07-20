@@ -175,7 +175,8 @@ async function checkLength() {
     if (userOrder.length === correctOrder.length) {
         checkOrder();
     } else if (userOrder.length > correctOrder.length) {
-        await gameOver(playerScore);
+        disablePlayerInput();
+        await gameOver();
     }
 }
 
@@ -184,7 +185,7 @@ async function checkOrder() {
     
     for (let i = 0; i < correctOrder.length; i++) {
         if (userOrder[i] !== correctOrder[i]) {
-            await gameOver(playerScore);
+            await gameOver();
             return;
         }
     }
