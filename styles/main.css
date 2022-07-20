@@ -39,16 +39,30 @@ header {
     background-color: var(--header-background);
 }
 
+header .avatar-image {
+    width: 48px;
+    height: 48px;
+}
+
+.avatar-image {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 #user {
-    flex-grow: 2;
-    margin-right: 20px;
-    text-align: right;
-    display: grid;
+    display: flex;
+    gap: 10px;
 }
 
 #user a {
     font-size: .8em;
-    color:steelblue;
+    color:rgb(255, 255, 255);
+}
+
+.stacked {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
 }
 
 .hidden {

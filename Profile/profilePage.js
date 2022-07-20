@@ -43,7 +43,7 @@ async function handleUpdateProfile(username, avatar) {
 
 // Components 
 const User = createUser(
-    document.querySelector('#user'),
+    document.querySelector('#user'), { href: '/', text: 'Home' },
     { handleSignOut }
 );
 
@@ -52,7 +52,7 @@ const Profile = createProfile(document.querySelector('#profile-form'), { handleU
 
 
 function display() {
-    User({ user });
+    User({ user, profile });
     Profile({ user, profile });
     
 }
