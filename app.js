@@ -66,6 +66,7 @@ async function handlePageLoad() {
     display();
 }
 
+
 async function handleSignOut() {
     signOut();
 }
