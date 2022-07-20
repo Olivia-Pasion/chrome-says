@@ -1,9 +1,10 @@
 import { getUser, signOut } from '../services/auth-service.js';
 import { protectPage } from '../utils.js';
-import { getProfile } from '../services/profile-service.js';
+import { getProfile, updateProfile } from '../services/profile-service.js';
+
 import createUser from '../components/User.js';
-import createProfileUpdate from '../components/UpdateProfile.js';
-import { updateProfile } from '../services/profile-service.js';
+
+import createProfile from '../components/Profile.js';
 
 
 // State
@@ -17,6 +18,7 @@ async function handlePageLoad() {
 
     profile = await getProfile() || [];
 
+
     display();
 }
 
@@ -24,15 +26,18 @@ async function handleSignOut() {
     signOut();
 }
 
-async function handleProfileUpdate(username) {
+async function handleUpdateProfile(username, avatar) {
     const profileInput = {
         id: profile.id,
         profile_name: username,
         user_id: user.id,
+        avatar_url: avatar
     };
 
-    await updateProfile([profileInput]);
+    
+    await updateProfile(profileInput);
     location.replace('/');
+
     display();
 }
 
@@ -42,14 +47,14 @@ const User = createUser(
     { handleSignOut }
 );
 
-const Profile = createProfileUpdate(
-    document.querySelector('#profile-form'),
-    { handleProfileUpdate }
-);
+const Profile = createProfile(document.querySelector('#profile-form'), { handleUpdateProfile });
+
+
 
 function display() {
     User({ user });
     Profile({ user, profile });
+    
 }
 
 handlePageLoad();

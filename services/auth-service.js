@@ -1,5 +1,6 @@
 import { client } from './client.js';
 
+
 export function getUser() {
     return client.auth.user();
 }
@@ -15,3 +16,5 @@ export async function signIn(email, password) {
 export async function signOut() {
     return await client.auth.signOut();
 }
+
+

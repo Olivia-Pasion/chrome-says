@@ -10,6 +10,14 @@
 --light-cyan: #caf0f8ff;
 }
 
+h1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 5%;
+}
+
+
 h2 {
     text-align: center;
     font-size: 3em;
@@ -221,4 +229,8 @@ main {
 .green {
     grid-area: greenS;
     background-color: lightgreen;
+}
+
+a:visited {
+    color: black;
 }

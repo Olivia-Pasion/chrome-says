@@ -10,6 +10,7 @@ import { getLeaderBoard, handleSubmitScore } from './services/score-service.js';
 import createLeaderBoard from './components/LeaderBoard.js';
 
 
+
 // State
 let user = null;
 let scores = [];
@@ -57,7 +58,7 @@ async function handlePageLoad() {
     protectPage(user);
 
     scores = await getLeaderBoard();
-    console.log(scores);
+    
 
     theme = localStorage.getItem('theme');
     handleTheme();
