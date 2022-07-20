@@ -2,22 +2,10 @@ import { getUser } from '../services/auth-service.js';
 import { getProfile } from '../services/profile-service.js';
 import { checkDifficulty, checkProfile, protectPage } from '../utils.js';
 import { handleSubmitScore } from '../services/score-service.js';
-
-
-
-
-
-// const darkModeButton = document.querySelector('.dark-mode');
-// const body = document.querySelector('body');
-// darkModeButton.addEventListener('click', () => {
-//     if (body.classList.contains('dark') === true) {
-//         body.classList.remove('dark');  
-//     } else {
-//         body.classList.add('dark');
-//     }
-// });
-
-
+//Add buttons into an array and access them dynamically.
+//implement sound using the same timout logic as the glowing function
+//Add a popup showing you lost with your score.
+//implement lives perhaps
 //State
 let theme = localStorage.getItem('theme');
 let difficultyMultiplier = 0;
@@ -123,17 +111,10 @@ function setDifficulty() {
         difficultyMultiplier = 2;
     }
 }
-// function increaseScore() {
-//     let currentScore = 
-//     playerScore++;
-// }
 
 const buttonSelector = document.getElementById('full-game');
 const [blueButton, redButton, yellowButton, greenButton] = buttonSelector.querySelectorAll('button');
 
-//clean up later if get a chance
-
-//Players-Input
 
 blueButton.addEventListener('click', () => {
     userOrder.push(1);
@@ -193,7 +174,6 @@ async function checkLength() {
 
     if (userOrder.length === correctOrder.length) {
         checkOrder();
-        //console.log(userOrder.length, correctOrder.length);
     } else if (userOrder.length > correctOrder.length) {
         await gameOver(playerScore);
     }
@@ -229,10 +209,8 @@ async function orderDisplay() {
     } 
     disablePlayerInput();
     buttonsLightUp();
-    console.log(correctOrder);
 }
 
-// const index = correctOrder.indexOf(order);
 
 //Display
 async function buttonsLightUp() {
@@ -241,7 +219,6 @@ async function buttonsLightUp() {
         if (i === correctOrder.length - 1) {
             let inputDelay = i + 1; 
             setTimeout(function(){enablePlayerInput();}, inputDelay * defaultTimer);
-            console.log(userOrder);
         }
     } 
 

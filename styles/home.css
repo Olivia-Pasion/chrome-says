@@ -9,12 +9,14 @@
 --blizzard-blue: #ade8f4ff;
 --light-cyan: #caf0f8ff;
 }
+
 h1 {
     display: flex;
     align-items: center;
     justify-content: space-around;
     margin-left: 5%;
 }
+
 
 h2 {
     text-align: center;
