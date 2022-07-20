@@ -16,7 +16,7 @@ export function checkLevel(level) {
 
 export async function checkProfile(profile) {
     if (!profile) {
-        location.replace(`profiles/index.html`);
+        location.replace(`Profile/index.html`);
     }
 }
 

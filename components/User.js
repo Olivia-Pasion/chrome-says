@@ -6,7 +6,7 @@ export default function createUser(root, contextLink, { handleSignOut }) {
 
     return ({ user, profile, showContextLink }) => {
         showContextLink = showContextLink ?? true;
-
+        console.log(profile);
         root.innerHTML = '';
 
         if (user) {
@@ -21,7 +21,7 @@ export default function createUser(root, contextLink, { handleSignOut }) {
             textContainer.classList.add('stacked');
 
             const nameDisplay = document.createElement('span');
-            const username = user?.email.split('@')[0];
+            const username = profile.profile_name || user?.email.split('@')[0];
             nameDisplay.textContent = username;
             textContainer.append(nameDisplay);
 
