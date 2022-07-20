@@ -9,6 +9,10 @@
   body {
     overflow: hidden;
   }
+
+  :disabled {
+    pointer-events: none;
+  }
   
   button {
     font-size: 2rem;
@@ -28,6 +32,7 @@
     width: 75%;
     height: 75%;
     opacity: 0.7;
+    pointer-events: none;
   }
   
   button::after {
@@ -47,21 +52,55 @@ button.blue:hover,
 button.blue:focus {
   color: var(--clr-blue);
   text-shadow: none;
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: 0;
+  margin-top: 0;
+  line-height: 1;
+  text-decoration: none;
+  color: blue;
+  animation: blueButtonFlash 1.5s ease-in-out infinite alternate;
 }
+
+
 button.red:hover,
 button.red:focus {
   color: var(--clr-red);
   text-shadow: none;
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: 0;
+  margin-top: 0;
+  line-height: 1;
+  text-decoration: none;
+  color: red;
+  animation: redButtonFlash 1.5s ease-in-out infinite alternate;
 }
 button.yellow:hover,
 button.yellow:focus {
   color: var(--clr-yellow);
   text-shadow: none;
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: 0;
+  margin-top: 0;
+  line-height: 1;
+  text-decoration: none;
+  color: darkgoldenrod;
+  animation: yellowButtonFlash 1.5s ease-in-out infinite alternate;
 }
 button.green:hover,
 button.green:focus {
   color: var(--clr-green);
   text-shadow: none;
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: 0;
+  margin-top: 0;
+  line-height: 1;
+  text-decoration: none;
+  color: green;
+  animation: greenButtonFlash 1.5s ease-in-out infinite alternate;
 }
 
 
@@ -85,4 +124,23 @@ button:focus::after {
         0 0 90px rgb(123, 235, 255),
         0 0 100px rgb(123, 235, 255),
         0 0 125px rgb(123, 235, 255);
+    font-size: 2em;
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
+
+#glow-ring {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 5vw;
+  border-radius: 25%;
+  background: linear-gradient(#023e8aff, #ade8f4ff, #0096c7ff);
+}
+
+
+
+
