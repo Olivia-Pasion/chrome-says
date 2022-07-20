@@ -17,7 +17,7 @@ async function handlePageLoad() {
     protectPage(user);
 
     profile = await getProfile() || [];
-    
+
 
     display();
 }
@@ -36,7 +36,8 @@ async function handleUpdateProfile(username, avatar) {
 
     
     await updateProfile(profileInput);
-    //location.replace('/');
+    location.replace('/');
+
     display();
 }
 

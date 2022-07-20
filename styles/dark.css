@@ -28,11 +28,15 @@
     justify-content: space-between;
     align-items: center;
     background-color: var(--dark-cornflower-blue);
-    color: rgb(195, 194, 194)
+    color: rgb(195, 194, 194);
 }
 
 .dark-section {
-    background-color: rgb(69, 69, 69);
-    background-color: rgb(205, 205, 205);
+    background-color: black !important;
+    color:rgb(195, 194, 194);
+}
+
+.dark-section button {
+    background-color: rgb(171, 169, 169);
 }
 
