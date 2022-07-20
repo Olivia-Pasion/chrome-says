@@ -199,8 +199,6 @@ readyButton.addEventListener('click', () => {
 });
 
 function display() {
-    // gameRead();
-    // orderDisplay();
     displayCurrentScore();
 }
 display();
