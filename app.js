@@ -4,6 +4,7 @@ import createUser from './components/User.js';
 
 //Score Service
 import { getLeaderBoard, handleSubmitScore } from './services/score-service.js';
+import { getProfile } from './services/profile-service.js';
 
 
 //Components
@@ -12,6 +13,7 @@ import createLeaderBoard from './components/LeaderBoard.js';
 
 
 // State
+let profile = null;
 let user = null;
 let scores = [];
 let theme = 'light';
@@ -58,6 +60,7 @@ async function handlePageLoad() {
     protectPage(user);
 
     scores = await getLeaderBoard();
+    profile = await getProfile();
     
 
     theme = localStorage.getItem('theme');
@@ -99,13 +102,14 @@ function handleTheme() {
 // DOM Components 
 
 const User = createUser(
-    document.querySelector('#user'),
+    document.querySelector('#user'), { href: './Profile', text: 'Edit Profile' },
     { handleSignOut }
 );
 
 const LeaderBoard = createLeaderBoard(document.querySelector('#leader-board'));
+
 function display() {
-    User({ user });
+    User({ user, profile });
     LeaderBoard({ scores });
 
 }
