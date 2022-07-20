@@ -8,7 +8,7 @@ import { getProfile } from './services/profile-service.js';
 
 
 //Components
-import createLeaderBoard, { createPlayerHighScore } from './components/LeaderBoard.js';
+import createLeaderBoard from './components/LeaderBoard.js';
 
 
 
@@ -96,14 +96,13 @@ const User = createUser(
     { handleSignOut }
 );
 
-const PlayerHighScore = createPlayerHighScore(document.querySelector('#player-high-score'));
+
 
 const LeaderBoard = createLeaderBoard(document.querySelector('#leader-board'));
 
 function display() {
     User({ user, profile });
     LeaderBoard({ scores });
-    PlayerHighScore({ highScores });
 }
 
 

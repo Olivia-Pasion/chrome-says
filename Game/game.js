@@ -2,40 +2,6 @@ import { getUser } from '../services/auth-service.js';
 import { getProfile } from '../services/profile-service.js';
 import { checkDifficulty, checkProfile, protectPage } from '../utils.js';
 import { handleSubmitScore } from '../services/score-service.js';
-<<<<<<< HEAD
-//Add buttons into an array and access them dynamically.
-//implement sound using the same timeout logic as the glowing function
-//Add a popup showing you lost with your score.
-//implement lives perhaps
-//State
-let theme = localStorage.getItem('theme');
-let difficultyMultiplier = 0;
-let playerScore = 0;
-let user = null;
-let userOrder = [];
-let correctOrder = [];
-let profile = null;
-let level = 0;
-let difficulty = null;
-let defaultTimer = null;
-let glowTimer = null;
-
-const header = document.querySelector('header');
-const body = document.querySelector('body');
-const readyButton = document.querySelector('#ready');
-
-let audioButton = document.querySelector('.audio-button'); 
-audioButton.addEventListener('click', function(){
-    var audio = document.getElementById('audio');
-
-    if (audio.paused) {
-        audio.play();
-    } else {
-        audio.pause();
-            // audio.currentTime = 0
-    }
-});
-=======
 
 //State
 let theme = localStorage.getItem('theme'),
@@ -56,26 +22,6 @@ const buttonSelector = document.getElementById('full-game'),
     header = document.querySelector('header'),
     body = document.querySelector('body'),
     readyButton = document.querySelector('#ready');
-
-
-let theme = localStorage.getItem('theme'),
-    difficultyMultiplier = 0,
-    playerScore = 0,
-    user = null,
-    userOrder = [],
-    correctOrder = [],
-    profile = null,
-    level = 0,
-    difficulty = null,
-    defaultTimer = null,
-    glowTimer = null;
-const buttonSelector = document.getElementById('full-game'),
-    [blueButton, redButton, yellowButton, greenButton] = buttonSelector.querySelectorAll('button'),
-    gameButtons = [blueButton, redButton, yellowButton, greenButton],
-    header = document.querySelector('header'),
-    body = document.querySelector('body'),
-    readyButton = document.querySelector('#ready');
->>>>>>> aa6321a1bb6502ff286c5c8778e9d2fb653edf27
 
 document.addEventListener('keydown', function(e) {
     if (e.key === 'q') {blueButton.click();}
@@ -255,12 +201,9 @@ readyButton.addEventListener('click', () => {
     readyButton.disabled = true;
 });
 
-<<<<<<< HEAD
-
-=======
->>>>>>> aa6321a1bb6502ff286c5c8778e9d2fb653edf27
 function display() {
     displayCurrentScore();
 }
 display();
 handlePageLoad();
+
