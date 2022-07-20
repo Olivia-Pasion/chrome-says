@@ -3,7 +3,7 @@ import { getProfile } from '../services/profile-service.js';
 import { checkDifficulty, checkProfile, protectPage } from '../utils.js';
 import { handleSubmitScore } from '../services/score-service.js';
 //Add buttons into an array and access them dynamically.
-//implement sound using the same timout logic as the glowing function
+//implement sound using the same timeout logic as the glowing function
 //Add a popup showing you lost with your score.
 //implement lives perhaps
 //State
@@ -23,6 +23,17 @@ const header = document.querySelector('header');
 const body = document.querySelector('body');
 const readyButton = document.querySelector('#ready');
 
+let audioButton = document.querySelector('.audio-button'); 
+audioButton.addEventListener('click', function(){
+    var audio = document.getElementById('audio');
+
+    if (audio.paused) {
+        audio.play();
+    } else {
+        audio.pause();
+            // audio.currentTime = 0
+    }
+});
 
 document.addEventListener('keydown', function(e) {
     if (e.key === 'q') {
@@ -253,8 +264,6 @@ readyButton.addEventListener('click', () => {
     readyButton.classlist.add('hidden');
     readyButton.disabled = true;
 });
-
-
 
 
 function display() {

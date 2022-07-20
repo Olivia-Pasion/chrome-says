@@ -7,13 +7,14 @@ import { getLeaderBoard, handleSubmitScore } from './services/score-service.js';
 
 
 //Components
-import createLeaderBoard from './components/LeaderBoard.js';
+import createLeaderBoard, { createPlayerHighScore } from './components/LeaderBoard.js';
 
 
 
 // State
 let user = null;
 let scores = [];
+let highScores = scores.indexOf[0];
 let theme = 'light';
 const sectionUserButtons = document.querySelector('#user-buttons');
 const sectionBoardDisplay = document.querySelector('#board-display');
@@ -59,7 +60,6 @@ async function handlePageLoad() {
 
     scores = await getLeaderBoard();
     
-
     theme = localStorage.getItem('theme');
     handleTheme();
 
@@ -102,11 +102,15 @@ const User = createUser(
     { handleSignOut }
 );
 
+const PlayerHighScore = createPlayerHighScore(document.querySelector('#player-high-score'));
+
 const LeaderBoard = createLeaderBoard(document.querySelector('#leader-board'));
+
 function display() {
     User({ user });
     LeaderBoard({ scores });
-
+    PlayerHighScore({ highScores });
 }
+
 
 handlePageLoad();
