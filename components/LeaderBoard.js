@@ -4,9 +4,13 @@ export default function createLeaderBoard(ul) {
     
     return ({ scores }) => {
         ul.innerHTML = '';
-        console.log(ul);
+        
         for (const score of scores) {
             const li = document.createElement('li');
+
+            const avatarImage = document.createElement('img');
+            avatarImage.classList.add('avatar-image');
+            avatarImage.src = score.userProfile.avatar_url;
             
             const usernameSpan = document.createElement('span');
             usernameSpan.classList.add('username-span');
@@ -16,8 +20,10 @@ export default function createLeaderBoard(ul) {
             scoreSpan.classList.add('score-span');
             scoreSpan.textContent = score.score;
             
-            li.append(usernameSpan, scoreSpan);
+            li.append(avatarImage, usernameSpan, scoreSpan);
             ul.append(li);
+
+    
             
         }
     };

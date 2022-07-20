@@ -17,6 +17,7 @@ export async function updateProfiles(profile, id) {
 export async function getProfile() {
     const user = getUser();
 
+
     const response = await client
         .from('simon-user-profiles')
         .select(`*`)
@@ -24,6 +25,7 @@ export async function getProfile() {
         .single();
 
     return response.data;
+    
 }
 
 

@@ -3,6 +3,27 @@ import { getProfile } from '../services/profile-service.js';
 import { checkDifficulty, checkProfile, protectPage } from '../utils.js';
 import { handleSubmitScore } from '../services/score-service.js';
 
+//State
+let theme = localStorage.getItem('theme'),
+    difficultyMultiplier = 0,
+    playerScore = 0,
+    user = null,
+    userOrder = [],
+    correctOrder = [],
+    profile = null,
+    level = 0,
+    difficulty = null,
+    defaultTimer = null,
+    glowTimer = defaultTimer;
+
+const buttonSelector = document.getElementById('full-game'),
+    [blueButton, redButton, yellowButton, greenButton] = buttonSelector.querySelectorAll('button'),
+    gameButtons = [blueButton, redButton, yellowButton, greenButton],
+    header = document.querySelector('header'),
+    body = document.querySelector('body'),
+    readyButton = document.querySelector('#ready');
+
+
 let theme = localStorage.getItem('theme'),
     difficultyMultiplier = 0,
     playerScore = 0,
@@ -46,7 +67,6 @@ async function gameOver() {
     playerScore = playerScore * difficultyMultiplier;
     window.alert(`Game Over you got ${playerScore} points`);
     await handleSubmitScore(profile.id, playerScore);
-    
     localStorage.removeItem('difficulty');
     location.replace('/');
 }
@@ -107,6 +127,7 @@ greenButton.addEventListener('click', () => {
     checkLength();
 });
 
+
 function generateOrder() {
     const randomNumber = Math.floor(Math.random() * 4) + 1;
     correctOrder.push(randomNumber);
@@ -127,6 +148,7 @@ async function checkLength() {
     } else if (userOrder.length > correctOrder.length) {
         disablePlayerInput();
         await gameOver();
+
     }
 }
 
