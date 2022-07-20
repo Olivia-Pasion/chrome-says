@@ -23,25 +23,6 @@ const buttonSelector = document.getElementById('full-game'),
     body = document.querySelector('body'),
     readyButton = document.querySelector('#ready');
 
-
-let theme = localStorage.getItem('theme'),
-    difficultyMultiplier = 0,
-    playerScore = 0,
-    user = null,
-    userOrder = [],
-    correctOrder = [],
-    profile = null,
-    level = 0,
-    difficulty = null,
-    defaultTimer = null,
-    glowTimer = null;
-const buttonSelector = document.getElementById('full-game'),
-    [blueButton, redButton, yellowButton, greenButton] = buttonSelector.querySelectorAll('button'),
-    gameButtons = [blueButton, redButton, yellowButton, greenButton],
-    header = document.querySelector('header'),
-    body = document.querySelector('body'),
-    readyButton = document.querySelector('#ready');
-
 document.addEventListener('keydown', function(e) {
     if (e.key === 'q') {blueButton.click();}
 });
