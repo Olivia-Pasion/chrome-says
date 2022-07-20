@@ -34,7 +34,6 @@ async function handleUpdateProfile(username, avatar) {
         avatar_url: avatar
     };
 
-    
     await updateProfile(profileInput);
     location.replace('/');
 
