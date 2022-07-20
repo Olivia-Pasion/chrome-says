@@ -172,6 +172,12 @@ h2 {
     border-radius: 50px;
 }
 
+#board-display img.avatar-image {
+    height: max(16px, min(100px, 10vw));
+    width: max(16px, min(100px, 10vw));
+    grid-area: "avatar";
+}
+
 #difficulty-container {
     grid-area: difficulty; 
 

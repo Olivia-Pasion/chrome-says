@@ -1,5 +1,5 @@
 import { getUser, signOut } from '../services/auth-service.js';
-import { protectPage } from '../utils.js';
+import { checkProfile, protectPage } from '../utils.js';
 import { getProfile, updateProfile } from '../services/profile-service.js';
 
 import createUser from '../components/User.js';
@@ -16,9 +16,10 @@ async function handlePageLoad() {
     user = getUser();
     protectPage(user);
 
-    profile = await getProfile() || [];
-
-
+    profile = await getProfile() || { avatar_url: 'https://cpacsftmlinqqlebpokj.supabase.co/storage/v1/object/public/chromesays-avatar/blank-profile-picture-973460_960_720.webp'
+        
+    };
+    
     display();
 }
 

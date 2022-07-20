@@ -1,5 +1,5 @@
 import { getUser, signOut } from './services/auth-service.js';
-import { protectPage } from './utils.js';
+import { protectPage, checkProfile } from './utils.js';
 import createUser from './components/User.js';
 
 //Score Service
@@ -61,6 +61,7 @@ async function handlePageLoad() {
 
     scores = await getLeaderBoard();
     profile = await getProfile();
+    checkProfile(profile);
     
 
     theme = localStorage.getItem('theme');
