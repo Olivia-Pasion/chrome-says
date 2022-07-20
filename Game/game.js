@@ -16,41 +16,30 @@ let theme = localStorage.getItem('theme'),
     glowTimer = null;
 const buttonSelector = document.getElementById('full-game'),
     [blueButton, redButton, yellowButton, greenButton] = buttonSelector.querySelectorAll('button'),
-    gameButtons = [blueButton, redButton, yellowButton, greenButton];
+    gameButtons = [blueButton, redButton, yellowButton, greenButton],
+    header = document.querySelector('header'),
+    body = document.querySelector('body'),
+    readyButton = document.querySelector('#ready');
 
-const header = document.querySelector('header');
-const body = document.querySelector('body');
-const readyButton = document.querySelector('#ready');
-
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'q') {
-        blueButton.click();
-    }
+    if (e.key === 'q') {blueButton.click();}
 });
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'w') {
-        redButton.click();
-    }
+    if (e.key === 'w') {redButton.click();}
 });
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'a') {
-        yellowButton.click();
-    }
+    if (e.key === 'a') {yellowButton.click();}
 });
 document.addEventListener('keydown', function(e) {
-    if (e.key === 's') {
-        greenButton.click();
-    }
+    if (e.key === 's') {greenButton.click();}
 });
 
 function disablePlayerInput() {
-    for (let i = 0; i < gameButtons.length; i++)
-        gameButtons[i].disabled = true;
+    for (let i = 0; i < gameButtons.length; i++) gameButtons[i].disabled = true;
 }
 
 function enablePlayerInput() {
-    for (let i = 0; i < gameButtons.length; i++)
-        gameButtons[i].disabled = false;
+    for (let i = 0; i < gameButtons.length; i++) gameButtons[i].disabled = false;
 }
 
 async function gameOver() {
@@ -91,17 +80,14 @@ function handleTheme() {
 function setDifficulty() {
     if (difficulty === 'easy') {
         defaultTimer = 1500;
-        glowTimer = 1250;
         difficultyMultiplier = 1;
     } else if (difficulty === 'medium') {
         defaultTimer = 1250;
-        glowTimer = 1000;
         difficultyMultiplier = 1.5;
     } else if (difficulty === 'hard') {
         defaultTimer = 1000;
-        glowTimer = 750;
         difficultyMultiplier = 2;
-    }
+    } glowTimer = defaultTimer - 250;
 }
 
 blueButton.addEventListener('click', () => {
