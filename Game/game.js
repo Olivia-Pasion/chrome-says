@@ -176,7 +176,11 @@ async function checkLength() {
         checkOrder();
     } else if (userOrder.length > correctOrder.length) {
         disablePlayerInput();
+<<<<<<< HEAD
         await gameOver(playerScore);
+=======
+        await gameOver();
+>>>>>>> 5bd81b7 (insignificant changes)
     }
 }
 
@@ -185,7 +189,7 @@ async function checkOrder() {
     
     for (let i = 0; i < correctOrder.length; i++) {
         if (userOrder[i] !== correctOrder[i]) {
-            await gameOver(playerScore);
+            await gameOver();
             return;
         }
     }

@@ -74,12 +74,6 @@ async function handleSignOut() {
     signOut();
 }
 
-// Realtime function
-
-function realtimeAddScore(score) {
-    scores.unshift(score);
-    display();
-}
 
 function handleTheme() {
     if (theme === 'dark') {
