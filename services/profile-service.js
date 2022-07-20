@@ -70,11 +70,9 @@ async function uploadAvatar(profileId, imageFile) {
     //if (imageFile.size === 0) return null;
 
     const name = Math.floor(Math.random() * 100000);
-    console.log(imageFile);
     const ext = imageFile.type.split('/')[1];
 
     let filename = `/${profileId}/${name}.${ext}`;
-    console.log(filename);
     const bucket = client
         .storage
         .from('chromesays-avatar');

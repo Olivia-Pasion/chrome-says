@@ -2,26 +2,25 @@ import { getUser } from '../services/auth-service.js';
 import { getProfile } from '../services/profile-service.js';
 import { checkDifficulty, checkProfile, protectPage } from '../utils.js';
 import { handleSubmitScore } from '../services/score-service.js';
-//Add buttons into an array and access them dynamically.
-//implement sound using the same timout logic as the glowing function
-//Add a popup showing you lost with your score.
-//implement lives perhaps
 //State
-let theme = localStorage.getItem('theme');
-let difficultyMultiplier = 0;
-let playerScore = 0;
-let user = null;
-let userOrder = [];
-let correctOrder = [];
-let profile = null;
-let level = 0;
-let difficulty = null;
-let defaultTimer = null;
-let glowTimer = null;
+let theme = localStorage.getItem('theme'),
+    difficultyMultiplier = 0,
+    playerScore = 0,
+    user = null,
+    userOrder = [],
+    correctOrder = [],
+    profile = null,
+    level = 0,
+    difficulty = null,
+    defaultTimer = null,
+    glowTimer = defaultTimer;
 
-const header = document.querySelector('header');
-const body = document.querySelector('body');
-const readyButton = document.querySelector('#ready');
+const buttonSelector = document.getElementById('full-game'),
+    [blueButton, redButton, yellowButton, greenButton] = buttonSelector.querySelectorAll('button'),
+    gameButtons = [blueButton, redButton, yellowButton, greenButton],
+    header = document.querySelector('header'),
+    body = document.querySelector('body'),
+    readyButton = document.querySelector('#ready');
 
 
 document.addEventListener('keydown', function(e) {
@@ -46,26 +45,17 @@ document.addEventListener('keydown', function(e) {
 });
 
 function disablePlayerInput() {
-
-    blueButton.disabled = true;
-    greenButton.disabled = true;
-    yellowButton.disabled = true;
-    redButton.disabled = true;
+    for (let i = 0; i < gameButtons.length; i++) gameButtons[i].disabled = true;
 }
 
 function enablePlayerInput() {
-    blueButton.disabled = false;
-    greenButton.disabled = false;
-    yellowButton.disabled = false;
-    redButton.disabled = false;
-
+    for (let i = 0; i < gameButtons.length; i++) gameButtons[i].disabled = false;
 }
-
 
 async function gameOver() {
     playerScore = playerScore * difficultyMultiplier;
+    window.alert(`Game Over you got ${playerScore} points`);
     await handleSubmitScore(profile.id, playerScore);
-    
     localStorage.removeItem('difficulty');
     location.replace('/');
 }
@@ -112,52 +102,34 @@ function setDifficulty() {
     }
 }
 
-const buttonSelector = document.getElementById('full-game');
-const [blueButton, redButton, yellowButton, greenButton] = buttonSelector.querySelectorAll('button');
-
-
 blueButton.addEventListener('click', () => {
     userOrder.push(1);
     checkLength();
-    
 });
 redButton.addEventListener('click', () => {
     userOrder.push(2);
     checkLength();
-    
 });
 yellowButton.addEventListener('click', () => {
     userOrder.push(3);
     checkLength();
-    
 });
 greenButton.addEventListener('click', () => {
     userOrder.push(4);
     checkLength();
-    
 });
 
-//Calculators
 
 function generateOrder() {
     const randomNumber = Math.floor(Math.random() * 4) + 1;
 // blue
-    if (randomNumber === 1) {
-        correctOrder.push(1);
-    } 
+    if (randomNumber === 1) {correctOrder.push(1);} 
 // red
-    if (randomNumber === 2) {
-        correctOrder.push(2);
-    }
+    if (randomNumber === 2) {correctOrder.push(2);}
 // yellow
-    if (randomNumber === 3) {
-        correctOrder.push(3);
-    }
+    if (randomNumber === 3) {correctOrder.push(3);}
 // green
-    if (randomNumber === 4) {
-        correctOrder.push(4);
-    }
-        
+    if (randomNumber === 4) {correctOrder.push(4);}
 }
 
 function increaseScore() {
@@ -167,32 +139,30 @@ function increaseScore() {
 function displayCurrentScore() {
     let currentScore = document.getElementById('player-current-score');
     currentScore.textContent = playerScore * difficultyMultiplier;
-
 }
 
 async function checkLength() {
-
     if (userOrder.length === correctOrder.length) {
         checkOrder();
     } else if (userOrder.length > correctOrder.length) {
         disablePlayerInput();
         await gameOver(playerScore);
+        await gameOver();
     }
 }
 
-
 async function checkOrder() {
-    
     for (let i = 0; i < correctOrder.length; i++) {
         if (userOrder[i] !== correctOrder[i]) {
-            await gameOver(playerScore);
+            disablePlayerInput();
+            await gameOver();
             return;
-        }
+        } 
     }
+
     increaseScore();
     await orderDisplay();
     display();
-    
 }
 
 async function gameRead() {
@@ -201,17 +171,14 @@ async function gameRead() {
     correctOrder = [];
 }
 
-
-
 async function orderDisplay() {
+    disablePlayerInput();
     await gameRead();
     for (let i = 0; i < level; i++) {
         generateOrder();
     } 
-    disablePlayerInput();
     buttonsLightUp();
 }
-
 
 //Display
 async function buttonsLightUp() {
@@ -222,7 +189,6 @@ async function buttonsLightUp() {
             setTimeout(function(){enablePlayerInput();}, inputDelay * defaultTimer);
         }
     } 
-
     function createDelay(i) {
         setTimeout(function() {
             if (correctOrder[i] === 1) {
@@ -254,12 +220,7 @@ readyButton.addEventListener('click', () => {
     readyButton.disabled = true;
 });
 
-
-
-
 function display() {
-    // gameRead();
-    // orderDisplay();
     displayCurrentScore();
 }
 display();
