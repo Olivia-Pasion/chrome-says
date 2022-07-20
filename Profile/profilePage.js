@@ -1,5 +1,5 @@
 import { getUser, signOut } from '../services/auth-service.js';
-import { protectPage } from '../utils.js';
+import { checkProfile, protectPage } from '../utils.js';
 import { getProfile, updateProfile } from '../services/profile-service.js';
 
 import createUser from '../components/User.js';
@@ -16,9 +16,10 @@ async function handlePageLoad() {
     user = getUser();
     protectPage(user);
 
-    profile = await getProfile() || [];
-
-
+    profile = await getProfile() || { avatar_url: 'https://cpacsftmlinqqlebpokj.supabase.co/storage/v1/object/public/chromesays-avatar/blank-profile-picture-973460_960_720.webp'
+        
+    };
+    
     display();
 }
 
@@ -34,7 +35,6 @@ async function handleUpdateProfile(username, avatar) {
         avatar_url: avatar
     };
 
-    
     await updateProfile(profileInput);
     location.replace('/');
 
@@ -43,7 +43,7 @@ async function handleUpdateProfile(username, avatar) {
 
 // Components 
 const User = createUser(
-    document.querySelector('#user'),
+    document.querySelector('#user'), { href: '/', text: 'Home' },
     { handleSignOut }
 );
 
@@ -52,7 +52,7 @@ const Profile = createProfile(document.querySelector('#profile-form'), { handleU
 
 
 function display() {
-    User({ user });
+    User({ user, profile });
     Profile({ user, profile });
     
 }

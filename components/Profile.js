@@ -30,13 +30,15 @@ export default function createProfile(form, { handleUpdateProfile }) {
     });
 
     return ({ user, profile }) => {
+        console.log(profile);
         if (profile) {
             const { username, avatar_url } = profile;
             if (username) usernameInput.value = username;
-            if (avatar_url) avatarDisplay.src = avatar_url;
+            if (typeof avatar_url === 'string') avatarDisplay.src = avatar_url;
             if (uploadPreview) avatarDisplay.src = uploadPreview;
         }
         else {
+
             usernameInput.value = user?.email.split('@')[0];
         }
     };
