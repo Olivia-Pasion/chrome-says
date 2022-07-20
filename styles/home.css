@@ -176,10 +176,10 @@ h2 {
     grid-area: difficulty; 
 
     background-color: white;
-    padding: 45px;
+    padding: 30px;
 
     box-shadow: 10px 7px 17px rgba(0, 0, 0, 0.369), 10px 7px 17px rgba(0, 0, 0, 0.369);
-    border: 1px solid;
+    border: 1px solid gray;
     border-radius: 50px;
 }
 
@@ -241,6 +241,15 @@ main {
     background-color: lightgreen;
 }
 
-a:visited {
+a {
     color: black;
+}
+
+.level {
+    padding: 40px;
+    font-size: 1em;
+}
+
+.dark-mode {
+    padding: 20px;
 }

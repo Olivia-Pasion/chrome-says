@@ -1,4 +1,5 @@
 *{
+    text-decoration: none;
     --midnight-blue: #03045eff;
 --dark-cornflower-blue: #023e8aff;
 --star-command-blue: #0077b6ff;
@@ -27,7 +28,7 @@ body {
 }
 
 header {
-    height: 10vh;
+    height: 10%;
     z-index: 999;
     padding: 10px;
     position: sticky;

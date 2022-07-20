@@ -2,7 +2,7 @@ import { getUser } from '../services/auth-service.js';
 import { getProfile } from '../services/profile-service.js';
 import { checkDifficulty, checkProfile, protectPage } from '../utils.js';
 import { handleSubmitScore } from '../services/score-service.js';
-//State
+
 let theme = localStorage.getItem('theme'),
     difficultyMultiplier = 0,
     playerScore = 0,
@@ -13,8 +13,7 @@ let theme = localStorage.getItem('theme'),
     level = 0,
     difficulty = null,
     defaultTimer = null,
-    glowTimer = defaultTimer;
-
+    glowTimer = null;
 const buttonSelector = document.getElementById('full-game'),
     [blueButton, redButton, yellowButton, greenButton] = buttonSelector.querySelectorAll('button'),
     gameButtons = [blueButton, redButton, yellowButton, greenButton],
@@ -22,26 +21,17 @@ const buttonSelector = document.getElementById('full-game'),
     body = document.querySelector('body'),
     readyButton = document.querySelector('#ready');
 
-
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'q') {
-        blueButton.click();
-    }
+    if (e.key === 'q') {blueButton.click();}
 });
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'w') {
-        redButton.click();
-    }
+    if (e.key === 'w') {redButton.click();}
 });
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'a') {
-        yellowButton.click();
-    }
+    if (e.key === 'a') {yellowButton.click();}
 });
 document.addEventListener('keydown', function(e) {
-    if (e.key === 's') {
-        greenButton.click();
-    }
+    if (e.key === 's') {greenButton.click();}
 });
 
 function disablePlayerInput() {
@@ -56,6 +46,7 @@ async function gameOver() {
     playerScore = playerScore * difficultyMultiplier;
     window.alert(`Game Over you got ${playerScore} points`);
     await handleSubmitScore(profile.id, playerScore);
+    
     localStorage.removeItem('difficulty');
     location.replace('/');
 }
@@ -89,17 +80,14 @@ function handleTheme() {
 function setDifficulty() {
     if (difficulty === 'easy') {
         defaultTimer = 1500;
-        glowTimer = 1250;
         difficultyMultiplier = 1;
     } else if (difficulty === 'medium') {
         defaultTimer = 1250;
-        glowTimer = 1000;
         difficultyMultiplier = 1.5;
     } else if (difficulty === 'hard') {
         defaultTimer = 1000;
-        glowTimer = 750;
         difficultyMultiplier = 2;
-    }
+    } glowTimer = defaultTimer - 250;
 }
 
 blueButton.addEventListener('click', () => {
@@ -119,17 +107,9 @@ greenButton.addEventListener('click', () => {
     checkLength();
 });
 
-
 function generateOrder() {
     const randomNumber = Math.floor(Math.random() * 4) + 1;
-// blue
-    if (randomNumber === 1) {correctOrder.push(1);} 
-// red
-    if (randomNumber === 2) {correctOrder.push(2);}
-// yellow
-    if (randomNumber === 3) {correctOrder.push(3);}
-// green
-    if (randomNumber === 4) {correctOrder.push(4);}
+    correctOrder.push(randomNumber);
 }
 
 function increaseScore() {
@@ -146,7 +126,6 @@ async function checkLength() {
         checkOrder();
     } else if (userOrder.length > correctOrder.length) {
         disablePlayerInput();
-        await gameOver(playerScore);
         await gameOver();
     }
 }
@@ -209,7 +188,6 @@ async function buttonsLightUp() {
             }
         }, defaultTimer * i);
     }
-    
 }
 
 readyButton.addEventListener('click', () => {
