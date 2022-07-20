@@ -25,6 +25,10 @@
     position: relative;
     cursor: pointer;
   }
+
+  button:disabled {
+      filter: brightness(90%);
+  }
   
   button::before {
     top: 75%;

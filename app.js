@@ -3,7 +3,7 @@ import { protectPage, checkProfile } from './utils.js';
 import createUser from './components/User.js';
 
 //Score Service
-import { getLeaderBoard, handleSubmitScore } from './services/score-service.js';
+import { getLeaderBoard } from './services/score-service.js';
 import { getProfile } from './services/profile-service.js';
 
 
@@ -13,19 +13,19 @@ import createLeaderBoard from './components/LeaderBoard.js';
 
 
 // State
-let profile = null;
-let user = null;
-let scores = [];
-let theme = 'light';
-const sectionUserButtons = document.querySelector('#user-buttons');
-const sectionBoardDisplay = document.querySelector('#board-display');
-const sectionDifficultyContainer = document.querySelector('#difficulty-container');
-const header = document.querySelector('header');
-const body = document.querySelector('body');
-const darkModeButton = document.querySelector('.dark-mode');
-const easy = document.querySelector('.easy');
-const medium = document.querySelector('.medium');
-const hard = document.querySelector('.hard');
+let profile = null,
+    user = null,
+    scores = [],
+    theme = 'light';
+const sectionUserButtons = document.querySelector('#user-buttons'),
+    sectionBoardDisplay = document.querySelector('#board-display'),
+    sectionDifficultyContainer = document.querySelector('#difficulty-container'),
+    header = document.querySelector('header'),
+    body = document.querySelector('body'),
+    darkModeButton = document.querySelector('.dark-mode'),
+    easy = document.querySelector('.easy'),
+    medium = document.querySelector('.medium'),
+    hard = document.querySelector('.hard');
 
 easy.addEventListener('click', () => {
     localStorage.setItem('difficulty', 'easy');
@@ -52,8 +52,6 @@ darkModeButton.addEventListener('click', () => {
     }
 });
 
-
-
 // Action Handlers
 async function handlePageLoad() {
     user = await getUser();
@@ -63,18 +61,15 @@ async function handlePageLoad() {
     profile = await getProfile();
     checkProfile(profile);
     
-
     theme = localStorage.getItem('theme');
     handleTheme();
 
     display();
 }
 
-
 async function handleSignOut() {
     signOut();
 }
-
 
 function handleTheme() {
     if (theme === 'dark') {
