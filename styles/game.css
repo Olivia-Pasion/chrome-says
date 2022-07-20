@@ -5,6 +5,10 @@
     --clr-red: rgb(255, 0, 0);
     --clr-yellow: rgb(174, 174, 0);
   }
+
+  body {
+    overflow: hidden;
+  }
   
   button {
     font-size: 2rem;
@@ -68,4 +72,17 @@ button:focus::before {
 button:hover::after,
 button:focus::after {
   opacity: 1;
+}
+
+.current-score {
+    color: #fff;
+    text-shadow:
+        0 0 1px oldlace,
+        0 0 10px oldlace,
+        0 0 20px oldlace,
+        0 0 40px rgb(123, 235, 255),
+        0 0 80px rgb(123, 235, 255),
+        0 0 90px rgb(123, 235, 255),
+        0 0 100px rgb(123, 235, 255),
+        0 0 125px rgb(123, 235, 255);
 }
