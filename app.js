@@ -60,7 +60,6 @@ async function handlePageLoad() {
     scores = await getLeaderBoard();
     profile = await getProfile();
     
-
     theme = localStorage.getItem('theme');
     handleTheme();
 

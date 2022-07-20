@@ -209,7 +209,6 @@ async function buttonsLightUp() {
             }
         }, defaultTimer * i);
     }
-    
 }
 
 readyButton.addEventListener('click', () => {
