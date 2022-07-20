@@ -206,4 +206,3 @@ function display() {
 }
 display();
 handlePageLoad();
-
