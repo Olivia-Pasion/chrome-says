@@ -22,7 +22,7 @@ const buttonSelector = document.getElementById('full-game'),
     header = document.querySelector('header'),
     body = document.querySelector('body'),
     readyButton = document.querySelector('#ready');
-
+//controls
 document.addEventListener('keydown', function(e) {
     if (e.key === 'q') {blueButton.click(), blueButton.focus();}
 });
@@ -34,6 +34,22 @@ document.addEventListener('keydown', function(e) {
 });
 document.addEventListener('keydown', function(e) {
     if (e.key === 's') {greenButton.click(), greenButton.focus();}
+});
+blueButton.addEventListener('click', () => {
+    userOrder.push(1);
+    checkLength();
+});
+redButton.addEventListener('click', () => {
+    userOrder.push(2);
+    checkLength();
+});
+yellowButton.addEventListener('click', () => {
+    userOrder.push(3);
+    checkLength();
+});
+greenButton.addEventListener('click', () => {
+    userOrder.push(4);
+    checkLength();
 });
 
 function disablePlayerInput() {
@@ -88,25 +104,11 @@ function setDifficulty() {
     } else if (difficulty === 'hard') {
         defaultTimer = 1000;
         difficultyMultiplier = 2;
+    } else if (difficulty === 'insane') {
+        defaultTimer = 400;
+        difficultyMultiplier = 3;
     } glowTimer = defaultTimer - 250;
 }
-
-blueButton.addEventListener('click', () => {
-    userOrder.push(1);
-    checkLength();
-});
-redButton.addEventListener('click', () => {
-    userOrder.push(2);
-    checkLength();
-});
-yellowButton.addEventListener('click', () => {
-    userOrder.push(3);
-    checkLength();
-});
-greenButton.addEventListener('click', () => {
-    userOrder.push(4);
-    checkLength();
-});
 
 function generateOrder() {
     const randomNumber = Math.floor(Math.random() * 4) + 1;
@@ -142,7 +144,7 @@ async function checkOrder() {
     }
 
     increaseScore();
-    await setTimeout(function(){orderDisplay();}, 1500);
+    await setTimeout(function(){orderDisplay();}, 1000);
     display();
 }
 
