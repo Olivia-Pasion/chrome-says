@@ -28,10 +28,10 @@ body {
 }
 
 header {
-    height: 10%;
+    height: 100px;
+    min-height: 80px;
     z-index: 999;
     padding: 10px;
-    position: sticky;
     top: 0;
     display: flex;
     flex-flow: row wrap;
