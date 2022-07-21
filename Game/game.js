@@ -24,16 +24,16 @@ const buttonSelector = document.getElementById('full-game'),
     readyButton = document.querySelector('#ready');
 
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'q') {blueButton.click();}
+    if (e.key === 'q') {blueButton.click(), blueButton.focus();}
 });
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'w') {redButton.click();}
+    if (e.key === 'w') {redButton.click(), redButton.focus();}
 });
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'a') {yellowButton.click();}
+    if (e.key === 'a') {yellowButton.click(), yellowButton.focus();}
 });
 document.addEventListener('keydown', function(e) {
-    if (e.key === 's') {greenButton.click();}
+    if (e.key === 's') {greenButton.click(), greenButton.focus();}
 });
 
 function disablePlayerInput() {
