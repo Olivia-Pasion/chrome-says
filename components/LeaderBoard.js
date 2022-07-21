@@ -28,20 +28,3 @@ export default function createLeaderBoard(ul) {
         }
     };
 }
-
-export function createPlayerHighScore(p) {
-    return ({ highScores }) => {
-        p.innerHTML = '';
-        for (const score of highScores) {
-            const li = document.createElement('li');
-            
-            const highestScore = document.createElement('span');
-            highestScore.classList.add('highest-score');
-            highestScore.textContent = score.score;
-      
-            li.append(highestScore);
-            p.append(li);
-            console.log(p);
-        }
-    };
-}
