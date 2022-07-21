@@ -22,8 +22,6 @@ export default function createLeaderBoard(ul) {
             
             li.append(avatarImage, usernameSpan, scoreSpan);
             ul.append(li);
-
-    
             
         }
     };
@@ -41,7 +39,6 @@ export function createPlayerHighScore(p) {
       
             li.append(highestScore);
             p.append(li);
-            console.log(p);
         }
     };
 }
