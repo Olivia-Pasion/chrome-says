@@ -17,9 +17,11 @@ form {
     justify-content: center;
     align-items: center;
 
-    padding: 25px;
+    padding: 25px 50px;
     margin: 100px;
     background-color: gray;
+
+    border-radius: 50px;
 }
 
 h2 {

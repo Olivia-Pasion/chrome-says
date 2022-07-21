@@ -32,3 +32,19 @@ export async function handleSubmitScore(profile_id, playerScore) {
 
     return response.data;
 }
+
+export async function getUserScoreBoard(id) {
+    
+
+    const response = await client
+        .from('leaderboard')
+        .select(`
+            score,
+            profile_id,
+            created: created_at,
+            user:simon-user-profiles(id, user_id)`)
+        .eq('profile_id', id)
+        .order('created_at', { ascending: false });
+    
+    return response.data;
+}
