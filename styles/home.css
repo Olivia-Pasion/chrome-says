@@ -31,7 +31,7 @@ h2 {
 
 @keyframes leaderboardFlash {
     from {
-      text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px green,
+      text-shadow: 0 0 10px black, 0 0 20px purple, 0 0 30px white, 0 0 40px green,
         0 0 35px green, 0 0 35px purple, 0 0 35px blue, 0 0 135px green;
     }
     to {
@@ -161,13 +161,13 @@ h2 {
     display: grid;
     grid-template-rows: min-content min-content 1fr;
     grid-template-areas:
-        "h2  h2"
+        "h2"
         
     ;
 
     background-color: white;
     padding: 60px;
-    box-shadow: 10px 7px 17px rgba(0, 0, 0, 0.369), 10px 7px 17px rgba(0, 0, 0, 0.369);
+    box-shadow: 10px 7px 17px rgba(0, 0, 0, 0.5), 10px 5px 15px rgba(0, 0, 0, 0.5);
     border: 1px solid;
     border-radius: 50px;
 }
@@ -258,4 +258,57 @@ a {
 
 .dark-mode {
     padding: 20px;
+}
+
+button.easy {
+    animation: easyFlashSpeed 2.5s linear infinite;
+}
+
+@keyframes easyFlashSpeed {
+    0% {
+      color: green;
+      text-shadow: none;
+    }
+    100% {
+      color: darkgoldenrod;
+      text-shadow: 
+        0 0 2rem orange, 
+        0 0 4rem yellow;
+    }
+}
+
+button.medium {
+    background-image: url(
+        https://media.geeksforgeeks.org/wp-content/uploads/20200828184719/rain-300x300.png);
+    animation: rain 3s linear infinite;
+    opacity: 1;
+    background-color: gainsboro;    
+}
+
+@keyframes rain {
+    0% {
+        background-position: 0 0;
+        opacity: 1;
+    }
+
+    100% {
+            background-position: 25% 75%;
+            opacity: 1;
+        }
+    }
+
+button.hard {
+    background-image: url(https://c.tenor.com/VbezPY1TRaMAAAAd/fire-flames.gif);
+    background-size: 100%;
+    color: whitesmoke;
+}
+
+#user-buttons button {
+    color: black;
+    background-color: white;
+}
+
+#user-buttons.dark-section button {
+    color: white;
+    background-color: black;
 }
