@@ -11,6 +11,7 @@
 }
 
 
+
 main#profile-page {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -24,6 +25,12 @@ main#profile-page {
     
   justify-content: center;
   align-items: center;
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
   padding: 25px 50px;
   margin: 100px;

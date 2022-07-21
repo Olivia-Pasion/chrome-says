@@ -22,18 +22,36 @@ const buttonSelector = document.getElementById('full-game'),
     header = document.querySelector('header'),
     body = document.querySelector('body'),
     readyButton = document.querySelector('#ready');
+    
+//controls
 
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'q') {blueButton.click();}
+    if (e.key === 'q') {blueButton.click(), blueButton.focus();}
 });
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'w') {redButton.click();}
+    if (e.key === 'w') {redButton.click(), redButton.focus();}
 });
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'a') {yellowButton.click();}
+    if (e.key === 'a') {yellowButton.click(), yellowButton.focus();}
 });
 document.addEventListener('keydown', function(e) {
-    if (e.key === 's') {greenButton.click();}
+    if (e.key === 's') {greenButton.click(), greenButton.focus();}
+});
+blueButton.addEventListener('click', () => {
+    userOrder.push(1);
+    checkLength();
+});
+redButton.addEventListener('click', () => {
+    userOrder.push(2);
+    checkLength();
+});
+yellowButton.addEventListener('click', () => {
+    userOrder.push(3);
+    checkLength();
+});
+greenButton.addEventListener('click', () => {
+    userOrder.push(4);
+    checkLength();
 });
 
 function disablePlayerInput() {
@@ -80,34 +98,19 @@ function handleTheme() {
 
 function setDifficulty() {
     if (difficulty === 'easy') {
-        defaultTimer = 1500;
+        defaultTimer = 1000;
         difficultyMultiplier = 1;
     } else if (difficulty === 'medium') {
-        defaultTimer = 1250;
+        defaultTimer = 750;
         difficultyMultiplier = 1.5;
     } else if (difficulty === 'hard') {
-        defaultTimer = 1000;
+        defaultTimer = 500;
         difficultyMultiplier = 2;
+    } else if (difficulty === 'insane') {
+        defaultTimer = 275;
+        difficultyMultiplier = 3;
     } glowTimer = defaultTimer - 250;
 }
-
-blueButton.addEventListener('click', () => {
-    userOrder.push(1);
-    checkLength();
-});
-redButton.addEventListener('click', () => {
-    userOrder.push(2);
-    checkLength();
-});
-yellowButton.addEventListener('click', () => {
-    userOrder.push(3);
-    checkLength();
-});
-greenButton.addEventListener('click', () => {
-    userOrder.push(4);
-    checkLength();
-});
-
 
 function generateOrder() {
     const randomNumber = Math.floor(Math.random() * 4) + 1;
@@ -143,7 +146,7 @@ async function checkOrder() {
     }
 
     increaseScore();
-    await orderDisplay();
+    await setTimeout(function(){orderDisplay();}, 1000);
     display();
 }
 

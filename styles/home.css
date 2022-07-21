@@ -303,6 +303,11 @@ button.hard {
     color: whitesmoke;
 }
 
+button.insane {
+    background-image: url(https://tenor.com/view/mad-angry-rage-computer-gif-gif-15818044.gif);
+    background-size: cover;
+}
+
 #user-buttons button {
     color: black;
     background-color: white;
@@ -312,3 +317,5 @@ button.hard {
     color: white;
     background-color: black;
 }
+
+

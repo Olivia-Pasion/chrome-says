@@ -25,7 +25,8 @@ const sectionUserButtons = document.querySelector('#user-buttons'),
     darkModeButton = document.querySelector('.dark-mode'),
     easy = document.querySelector('.easy'),
     medium = document.querySelector('.medium'),
-    hard = document.querySelector('.hard');
+    hard = document.querySelector('.hard'),
+    insane = document.querySelector('.insane');
 
 easy.addEventListener('click', () => {
     localStorage.setItem('difficulty', 'easy');
@@ -39,6 +40,11 @@ hard.addEventListener('click', () => {
     localStorage.setItem('difficulty', 'hard');
     location.replace('./Game/index.html');
 });
+insane.addEventListener('click', () => {
+    localStorage.setItem('difficulty', 'insane');
+    location.replace('./Game/index.html');
+});
+
 
 darkModeButton.addEventListener('click', () => {
     if (theme === 'dark') {
