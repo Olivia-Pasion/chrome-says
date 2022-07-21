@@ -22,9 +22,24 @@ export default function createLeaderBoard(ul) {
             
             li.append(avatarImage, usernameSpan, scoreSpan);
             ul.append(li);
-
-    
             
         }
     };
 }
+
+export function createPlayerHighScore(p) {
+    return ({ highScores }) => {
+        p.innerHTML = '';
+        for (const score of highScores) {
+            const li = document.createElement('li');
+            
+            const highestScore = document.createElement('span');
+            highestScore.classList.add('highest-score');
+            highestScore.textContent = score.score;
+      
+            li.append(highestScore);
+            p.append(li);
+        }
+    };
+}
+

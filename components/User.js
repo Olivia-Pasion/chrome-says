@@ -6,7 +6,7 @@ export default function createUser(root, contextLink, { handleSignOut }) {
 
     return ({ user, profile, showContextLink }) => {
         showContextLink = showContextLink ?? true;
-        console.log(profile);
+    
         root.innerHTML = '';
 
         if (user) {

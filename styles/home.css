@@ -189,7 +189,7 @@ h2 {
     border-radius: 50px;
 }
 
-main {
+main#home {
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: min-content 1fr;

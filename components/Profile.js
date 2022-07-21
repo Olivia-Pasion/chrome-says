@@ -30,7 +30,6 @@ export default function createProfile(form, { handleUpdateProfile }) {
     });
 
     return ({ user, profile }) => {
-        console.log(profile);
         if (profile) {
             const { username, avatar_url } = profile;
             if (username) usernameInput.value = username;
