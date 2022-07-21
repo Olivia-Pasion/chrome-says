@@ -133,14 +133,19 @@ button:focus::after {
     text-align: center;
     justify-content: center;
     align-items: center;
+    grid-template-areas: 
+        "  div  "
+        "  div  "
+    ;
+    grid-template-columns: 50% 50%;
 }
 
 #glow-ring {
   display: grid;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   text-align: center;
-  width: 5vw;
+  width: 15vw;
   border-radius: 25%;
   background: linear-gradient(#023e8aff, #ade8f4ff, #0096c7ff);
 }

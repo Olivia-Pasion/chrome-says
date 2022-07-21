@@ -22,7 +22,9 @@ const buttonSelector = document.getElementById('full-game'),
     header = document.querySelector('header'),
     body = document.querySelector('body'),
     readyButton = document.querySelector('#ready');
+    
 //controls
+
 document.addEventListener('keydown', function(e) {
     if (e.key === 'q') {blueButton.click(), blueButton.focus();}
 });

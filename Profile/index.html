@@ -24,14 +24,19 @@
     </header>
 
     <main>
-        <form id="profile-form">
-            <h3>Edit Profile</h2>
-            <input name="name" placeholder="enter username" required>
-            Upload Avatar Image
-            <input name="avatar" type="file" accept="image/*"></input>
-            <img id="avatar-preview" class="avatar-image" src="">
-            <button>Update</button>
-        </form>
+        <div id="form-container">
+            <form id="profile-form">
+                <h3>Edit Profile</h2>
+                <input name="name" placeholder="enter username" required>
+                Upload Avatar Image
+                <input name="avatar" type="file" accept="image/*"></input>
+                <img id="avatar-preview" class="avatar-image" src="">
+                <button>Update</button>
+            </form>
+        </div>
+        <div id="user-score-container">
+            <ul id="user-scoreboard"></ul>
+        </div>
     </main>
 
     <script type="module" src="profilePage.js"></script>

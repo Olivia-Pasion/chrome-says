@@ -102,12 +102,14 @@ const User = createUser(
     { handleSignOut }
 );
 
+
+
 const LeaderBoard = createLeaderBoard(document.querySelector('#leader-board'));
 
 function display() {
     User({ user, profile });
     LeaderBoard({ scores });
-
 }
+
 
 handlePageLoad();
