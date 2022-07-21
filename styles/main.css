@@ -73,3 +73,14 @@ header .avatar-image {
 main {
     height: 100%;
 }
+#leader-board li {
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+.username-span {
+    font-size: 1.25em;
+}
+.score-span {
+    margin: 1em;
+}
