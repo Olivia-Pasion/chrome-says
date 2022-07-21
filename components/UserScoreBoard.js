@@ -11,14 +11,11 @@ export default function createUserScoreBoard(ul) {
             const scoreSpan = document.createElement('span');
             scoreSpan.classList.add('score-span');
             scoreSpan.textContent = userScore.score;
+            
+            const niceDate = (new Date(userScore.created)).toLocaleString();
 
-            const gameTime = document.createElement('span');
-            gameTime.classList.add('time-span');
-            gameTime.textContent = userScore.created;
-
-            li.append(scoreSpan, gameTime);
+            li.append(scoreSpan, niceDate);
             ul.append(li);
         }
-        
     };
 }
