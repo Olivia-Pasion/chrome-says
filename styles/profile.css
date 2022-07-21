@@ -11,35 +11,121 @@
 }
 
 
-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    padding: 25px 50px;
-    margin: 100px;
-    background-color: gray;
-
-    border-radius: 50px;
+main#profile-page {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-areas: 
+    "score form";
 }
 
-h2 {
-    text-align: center;
-    font-size: 3em;
-    margin-bottom: 0;
-    margin-top: 0;
-    line-height: 1;
-    text-decoration: none;
-    color: black;
-    animation: profileFlash 1.5s ease-in-out infinite alternate;
+
+#user-score-container {
+  grid-area: score;
+    
+  justify-content: center;
+  align-items: center;
+
+  padding: 25px 50px;
+  margin: 100px;
+  background-color: gray;
+
+  border-radius: 50px;
 }
 
-#avatar-preview {
+#form-container {
+  grid-area: form;
+  display: grid;
+  grid-template-rows: min-content min-content;
+  grid-template-areas: 
+    "header"
+    "form";
+  align-items: center;
+
+  padding: 25px 50px;
+  margin: 100px;
+  background-color: gray;
+
+  border-radius: 50px;
+    
+}
+
+#form-container h3 {
+    grid-area: header;
+}
+
+#profile-form {
+  grid-area: form;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+
+img#avatar-preview {
+  grid-area: preview;
+
   align-self: center;
   width: 128px;
   height: 128px;
 }
+
+#user-score-container {
+  display: grid;
+  grid-template-rows: min-content min-content;
+  grid-template-areas: 
+    "header"
+    "score-table";
+}
+
+#user-score-container h3 {
+  grid-area: header;
+}
+
+#user-score-container table {
+  grid-area: score-table;
+}
+
+
+tbody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+tbody tr {
+  align-content:space-between
+}
+
+.score-head {
+  font-weight: bolder;
+  padding: 30px 7px;
+}
+
+.time-head {
+  font-weight: bolder;
+  padding: 30px 7px;
+}
+
+
+.score-span {  
+  padding: 7px 30px;
+}
+
+.date-tb {
+  padding: 30px 7px; 
+}
+
+h2 {
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: 0;
+  margin-top: 0;
+  line-height: 1;
+  text-decoration: none;
+  color: black;
+  animation: profileFlash 1.5s ease-in-out infinite alternate;
+}
+
+
 
 @keyframes profileFlash {
     from {
@@ -51,3 +137,4 @@ h2 {
         0 0 35px #ff1177, 0 0 40px #ff1177, 0 0 50px #ff1177, 0 0 75px #ff1177;
     }
   }
+

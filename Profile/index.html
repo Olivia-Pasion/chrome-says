@@ -23,19 +23,26 @@
         <div id="user"></div>
     </header>
 
-    <main>
+    <main id="profile-page">
         <div id="form-container">
+            <h3>Edit Profile</h3>
             <form id="profile-form">
-                <h3>Edit Profile</h2>
-                <input name="name" placeholder="enter username" required>
-                Upload Avatar Image
-                <input name="avatar" type="file" accept="image/*"></input>
+                <input class="username" name="name" placeholder="enter username" required>
+                <label>Upload Avatar Image</label>
+                <input class="avatar" name="avatar" type="file" accept="image/*"></input>
                 <img id="avatar-preview" class="avatar-image" src="">
                 <button>Update</button>
             </form>
         </div>
         <div id="user-score-container">
-            <ul id="user-scoreboard"></ul>
+            <h3>Your Scoreboard</h3>
+            <table id="score-table">
+                <tr>
+                    <th class="score-head">Score</th>
+                    <th class="time-head">Time Stamp</th>
+                </tr>
+                <tr id="user-scoreboard"></tr>
+            </table>
         </div>
     </main>
 

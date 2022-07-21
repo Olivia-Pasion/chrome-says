@@ -1,21 +1,24 @@
 
 
-export default function createUserScoreBoard(ul) {
+export default function createUserScoreBoard(tr) {
     
     return ({ userScores }) => {
-        ul.innerHTML = '';
+        tr.innerHTML = '';
 
         for (const userScore of userScores) {
-            const li = document.createElement('li');
+            const tb = document.createElement('tb');
 
-            const scoreSpan = document.createElement('span');
+            const scoreSpan = document.createElement('td');
             scoreSpan.classList.add('score-span');
             scoreSpan.textContent = userScore.score;
             
             const niceDate = (new Date(userScore.created)).toLocaleString();
+            const dateTb = document.createElement('td');
+            dateTb.classList.add('date-tb');
+            dateTb.textContent = niceDate;
 
-            li.append(scoreSpan, niceDate);
-            ul.append(li);
+            tb.append(scoreSpan, dateTb);
+            tr.append(tb);
         }
     };
 }
