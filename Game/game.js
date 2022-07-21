@@ -98,16 +98,16 @@ function handleTheme() {
 
 function setDifficulty() {
     if (difficulty === 'easy') {
-        defaultTimer = 1500;
+        defaultTimer = 1000;
         difficultyMultiplier = 1;
     } else if (difficulty === 'medium') {
-        defaultTimer = 1250;
+        defaultTimer = 750;
         difficultyMultiplier = 1.5;
     } else if (difficulty === 'hard') {
-        defaultTimer = 1000;
+        defaultTimer = 500;
         difficultyMultiplier = 2;
     } else if (difficulty === 'insane') {
-        defaultTimer = 400;
+        defaultTimer = 275;
         difficultyMultiplier = 3;
     } glowTimer = defaultTimer - 250;
 }
