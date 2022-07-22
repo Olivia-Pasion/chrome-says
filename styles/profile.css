@@ -20,13 +20,24 @@ main#profile-page {
 
 
 #user-score-container {
-  grid-area: score;
-    
+  grid-area: score; 
   justify-content: center;
   align-items: center;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px 50px;
+    margin: 100px;
 
   padding: 25px 50px;
   margin: 100px;
+
   background-color: gray;
 
   border-radius: 50px;
