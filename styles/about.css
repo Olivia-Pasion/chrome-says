@@ -1,0 +1,40 @@
+
+main {
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-areas: 
+      ". . ."; 
+    text-align: center;
+    margin-top: 25px;
+    overflow: none;
+}
+
+
+img {
+    border-radius: 50%;
+    max-width: 150px;
+}
+
+h3 {
+  padding-bottom: none;
+}
+
+#png {
+  max-height: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+    main {
+        display: grid; 
+        grid-template-columns: 1fr; 
+        grid-template-areas: 
+          "."; 
+        text-align: center;
+        margin-top: 25px;
+        overflow: none;
+    }
+
+    section {
+        margin-top: 25px;
+    }
+  }
