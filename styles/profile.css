@@ -11,7 +11,6 @@
 }
 
 
-
 main#profile-page {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -26,6 +25,7 @@ main#profile-page {
   align-items: center;
 }
 
+
 form {
     display: flex;
     flex-direction: column;
@@ -34,6 +34,10 @@ form {
 
     padding: 25px 50px;
     margin: 100px;
+
+  padding: 25px 50px;
+  margin: 100px;
+
   background-color: gray;
 
   border-radius: 50px;
