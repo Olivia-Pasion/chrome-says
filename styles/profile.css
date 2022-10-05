@@ -11,13 +11,6 @@
 }
 
 
-main#profile-page {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-areas: 
-    "score form";
-}
-
 
 #user-score-container {
   grid-area: score; 
@@ -25,33 +18,22 @@ main#profile-page {
   align-items: center;
 }
 
-
 form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    padding: 25px 50px;
-    margin: 100px;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 25px 50px;
   margin: 100px;
-
   background-color: gray;
-
   border-radius: 50px;
 }
 
 #form-container {
-  grid-area: form;
-  display: grid;
-  grid-template-rows: min-content min-content;
-  grid-template-areas: 
-    "header"
-    "form";
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   align-items: center;
-
   padding: 25px 50px;
   margin: 100px;
   background-color: gray;
@@ -59,17 +41,6 @@ form {
   border-radius: 50px;
     
 }
-
-#form-container h3 {
-    grid-area: header;
-}
-
-#profile-form {
-  grid-area: form;
-  display: flex;
-  flex-flow: column nowrap;
-}
-
 
 img#avatar-preview {
   grid-area: preview;

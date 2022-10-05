@@ -1,22 +1,15 @@
-## The Golden Rule:
+# Chrome Says - Our take on the children's game, Simon Says
 
-🦸 🦸‍♂️ `Stop starting and start finishing.` 🏁
 
-1. Limit Work in Progress (WIP)
-1. Validate each line of code before moving forward
-1. Keep it Simple Simon (KISS)
+# Features
+- Leader board to see where you rank amongst other players
+- Different levels of game play (higher levels are awarded more points!)
+- Randomized patterns as they increase in length
+- Dark mode and light mode
+- Users can customize their profile picture and username
 
-## Making a plan
+# Built With
+<img src="./assets/html_css_js.png" alt="HTML, CSS, JavaScript" width="300" height="100%"/>
 
-1. Make a drawing of your app. **Simple "wireframes"**
-1. Once you have a drawing, **name the HTML elements** you'll need to realize your vision**
-1. Determine the Components (sections) of your app.
-1. Within each component:
-    - For each HTML element ask: **Why do I need this?**
-    - Does this element need **static content**, or is the content **dynamic state**?
-    - If dynamic, what is **state** and what is it called
-    - **Find all the 'events'** (user clicks, form submit, on load etc) in your app. 
-1. For events, ask one by one, "What happens when" for each of these events. Does any state change?
-1. Once we know the _why_ of elements, state, and events -- think about how to implement the "Why" as a "How"
-1. Think about how to **validate each of your features** according to a Definition of Done
-1. Consider what features **_depend_ on what other features**. Use this dependency logic to figure out what order to complete tasks.
+# Planning Board
+<a href="https://miro.com/app/board/uXjVOl1TRGE=/?share_link_id=492362943402"><img src="https://store-images.s-microsoft.com/image/apps.59334.da7f283b-9ae8-462d-968c-37937444d8e9.94b0a2b8-1808-4bf5-987d-ab0d9b98780e.05b65b02-4545-49e7-b530-981ac20aa7a2.png"></a>
