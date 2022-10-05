@@ -1,4 +1,5 @@
-# Chrome Says - Our take on the children's game, Simon Says
+# Chrome Says
+Our take on the children's game, Simon Says
 
 
 # Features
